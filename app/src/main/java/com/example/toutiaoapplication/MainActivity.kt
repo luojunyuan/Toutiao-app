@@ -24,6 +24,7 @@ class MainActivity : AppCompatActivity() {
 
         // @layout.app_bar_main.xml 默认使用 CoordinatorLayout
         val toolbar: Toolbar = findViewById(R.id.toolbar)
+        toolbar.inflateMenu(R.menu.menu_activity_main)
         setSupportActionBar(toolbar)
 
         // in activity_main

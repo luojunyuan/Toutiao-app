@@ -10,5 +10,6 @@
     <string name="menu_home">Home</string>
     <string name="title_news">新闻</string>
     <string name="title_media">账号</string>
+    <string name="action_search">搜索</string>
 
 </resources>
