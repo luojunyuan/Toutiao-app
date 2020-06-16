@@ -5,22 +5,32 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ProgressBar
-import android.widget.TextView
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.Observer
-import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.toutiaoapplication.R
+import com.example.toutiaoapplication.base.BaseView
 
-class HomeFragment : Fragment() {
+class HomeFragment : Fragment(), BaseView<HomeContract.Presenter> {
 
-    lateinit var progressBar: ProgressBar
-    lateinit var viewManager: RecyclerView.LayoutManager
-    lateinit var recyclerView: RecyclerView
+    companion object {
+        private var instance: HomeFragment? = null
+    }
+    override var presenter: HomeContract.Presenter
+        get() = HomePresenter(this)
+        set(value) {}
+
+    private lateinit var progressBar: ProgressBar
+    private lateinit var viewManager: RecyclerView.LayoutManager
+    private lateinit var recyclerView: RecyclerView
     var viewAdapter: HomeAdapter? = null
 
-    lateinit var presenter: HomePresenter
+    fun getInstance(): HomeFragment {
+        if (instance == null) {
+            instance = HomeFragment()
+        }
+        return instance as HomeFragment
+    }
 
     override fun onCreateView(
             inflater: LayoutInflater,
@@ -28,18 +38,25 @@ class HomeFragment : Fragment() {
             savedInstanceState: Bundle?
     ): View? {
         val rootView = inflater.inflate(R.layout.fragment_home, container, false)
+
+        initView(rootView)
+        initData()
+
+        return rootView
+    }
+
+    private fun initData() {
+        presenter.prepareRecyclerViewAdapter(recyclerView)
+    }
+
+    private fun initView(rootView: View) {
         progressBar = rootView.findViewById(R.id.home_progress_bar)
         progressBar.visibility = View.INVISIBLE
 
-        presenter = HomePresenter(this)
         viewManager = LinearLayoutManager(context)
         recyclerView = rootView.findViewById<RecyclerView>(R.id.home_recycler_view).apply {
             setHasFixedSize(true)
             layoutManager = viewManager
         }
-
-        presenter.prepareRecyclerViewAdapter(recyclerView)
-
-        return rootView
     }
 }
