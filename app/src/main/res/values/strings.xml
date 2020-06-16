@@ -8,5 +8,7 @@
     <string name="action_settings">Settings</string>
 
     <string name="menu_home">Home</string>
+    <string name="title_news">新闻</string>
+    <string name="title_media">账号</string>
 
 </resources>
