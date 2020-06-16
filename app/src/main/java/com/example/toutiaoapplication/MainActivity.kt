@@ -22,6 +22,10 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
+        initControl()
+    }
+
+    private fun initControl() {
         // @layout.app_bar_main.xml 默认使用 CoordinatorLayout
         val toolbar: Toolbar = findViewById(R.id.toolbar)
         toolbar.inflateMenu(R.menu.menu_activity_main)
@@ -37,8 +41,11 @@ class MainActivity : AppCompatActivity() {
         // Passing each menu ID as a set of Ids because each
         // menu should be considered as top level destinations.
         // 设置侧边drawer导航栏
-        appBarConfiguration = AppBarConfiguration(setOf(
-                R.id.nav_home), drawerLayout)
+        appBarConfiguration = AppBarConfiguration(
+            setOf(
+                R.id.nav_home
+            ), drawerLayout
+        )
         setupActionBarWithNavController(navController, appBarConfiguration)
         navView.setupWithNavController(navController) // MVC view.setController(control)
     }
