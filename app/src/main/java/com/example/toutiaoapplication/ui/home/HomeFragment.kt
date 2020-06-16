@@ -20,6 +20,8 @@ class HomeFragment : Fragment() {
     lateinit var recyclerView: RecyclerView
     var viewAdapter: HomeAdapter? = null
 
+    lateinit var presenter: HomePresenter
+
     override fun onCreateView(
             inflater: LayoutInflater,
             container: ViewGroup?,
@@ -29,14 +31,14 @@ class HomeFragment : Fragment() {
         progressBar = rootView.findViewById(R.id.home_progress_bar)
         progressBar.visibility = View.INVISIBLE
 
+        presenter = HomePresenter(this)
         viewManager = LinearLayoutManager(context)
-        val data = arrayListOf<String>("aaaaaa", "bbbbbb")
-        viewAdapter = HomeAdapter(data)
         recyclerView = rootView.findViewById<RecyclerView>(R.id.home_recycler_view).apply {
             setHasFixedSize(true)
             layoutManager = viewManager
-            adapter = viewAdapter
         }
+
+        presenter.prepareRecyclerViewAdapter(recyclerView)
 
         return rootView
     }
