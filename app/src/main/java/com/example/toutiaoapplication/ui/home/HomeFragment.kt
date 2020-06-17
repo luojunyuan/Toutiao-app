@@ -1,5 +1,6 @@
 package com.example.toutiaoapplication.ui.home
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -9,9 +10,10 @@ import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.toutiaoapplication.R
-import com.example.toutiaoapplication.base.BaseView
+import com.example.toutiaoapplication.ui.detail.DetailActivity
+import com.example.toutiaoapplication.utils.toast
 
-class HomeFragment : Fragment(), BaseView<HomeContract.Presenter> {
+class HomeFragment : Fragment(), HomeContract.View {
 
     companion object {
         private var instance: HomeFragment? = null
@@ -58,5 +60,20 @@ class HomeFragment : Fragment(), BaseView<HomeContract.Presenter> {
             setHasFixedSize(true)
             layoutManager = viewManager
         }
+        recyclerView.addOnItemTouchListener(RecyclerItemClickListener(
+            rootView.context, recyclerView, object : RecyclerItemClickListener.OnItemClickListener {
+
+                override fun onItemClick(view: View, position: Int) {
+                    val intent = Intent(activity, DetailActivity::class.java)
+                    startActivity(intent)
+                }
+                override fun onItemLongClick(view: View?, position: Int) {
+                    toast("点击打开")
+                }
+            }))
+    }
+
+    override fun showDetail() {
+        TODO("Not yet implemented")
     }
 }
