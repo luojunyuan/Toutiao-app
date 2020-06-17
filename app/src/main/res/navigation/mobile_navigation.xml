@@ -11,4 +11,16 @@
         android:label="@string/menu_home"
         tools:layout="@layout/fragment_home" />
 
+    <fragment
+        android:id="@+id/nav_mine"
+        android:name="com.example.toutiaoapplication.ui.mine.MineFragment"
+        android:label="@string/menu_mine"
+        tools:layout="@layout/fragment_mine" />
+
+    <fragment
+        android:id="@+id/nav_setting"
+        android:name="com.example.toutiaoapplication.ui.setting.SettingFragment"
+        android:label="@string/menu_setting"
+        tools:layout="@layout/fragment_setting" />
+
 </navigation>

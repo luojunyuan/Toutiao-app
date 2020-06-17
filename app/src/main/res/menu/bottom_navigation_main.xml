@@ -8,9 +8,9 @@
         android:title="@string/title_news"
         app:showAsAction="ifRoom"/>
     <item
-        android:id="@+id/action_media"
+        android:id="@+id/action_mine"
         android:enabled="true"
         android:icon="@drawable/ic_library_books_white_24dp"
-        android:title="@string/title_media"
+        android:title="@string/title_mine"
         app:showAsAction="ifRoom"/>
 </menu>

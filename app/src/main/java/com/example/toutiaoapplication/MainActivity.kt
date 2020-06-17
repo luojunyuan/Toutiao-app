@@ -1,17 +1,21 @@
 package com.example.toutiaoapplication
 
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
 import androidx.drawerlayout.widget.DrawerLayout
 import androidx.fragment.app.FragmentTransaction
+import androidx.navigation.NavController
 import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.navigateUp
 import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
 import com.example.toutiaoapplication.ui.home.HomeFragment
+import com.example.toutiaoapplication.ui.mine.MineActivity
+import com.example.toutiaoapplication.ui.mine.MineFragment
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.android.material.navigation.NavigationView
 import kotlin.properties.Delegates
@@ -28,6 +32,7 @@ class MainActivity : AppCompatActivity() {
     private var position by Delegates.notNull<Int>()
     private lateinit var toolbar: Toolbar
     private var homeTableLayout: HomeFragment = HomeFragment().getInstance()
+    private var mineTableLayout: MineFragment = MineFragment().getInstance()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -46,15 +51,14 @@ class MainActivity : AppCompatActivity() {
         setSupportActionBar(toolbar)
 
         val bottomNavigation = findViewById<BottomNavigationView>(R.id.bottom_navigation)
-        bottomNavigation.setOnNavigationItemSelectedListener { item ->
-            when (item.itemId) {
-                R.id.action_news -> showFragment(FRAGMENT_NEWS)
-                R.id.action_media -> showFragment(FRAGMENT_MINE)
+        bottomNavigation.setOnNavigationItemReselectedListener {
+            when (it.itemId) {
+                // FIXME 需要按两下才能进入那个页面
+                R.id.action_mine -> startActivity(Intent(this, MineActivity::class.java))
             }
-            true
         }
 
-        // in activity_main
+        // 以下drawer组件 in activity_main
         // activity_main 就是一个DrawerLayout
         val drawerLayout: DrawerLayout = findViewById(R.id.drawer_layout)
         // drawer layout 中的导航栏
@@ -66,45 +70,11 @@ class MainActivity : AppCompatActivity() {
         // 设置侧边drawer导航栏
         appBarConfiguration = AppBarConfiguration(
             setOf(
-                R.id.nav_home
+                R.id.nav_home, R.id.nav_setting, R.id.nav_mine
             ), drawerLayout
         )
         setupActionBarWithNavController(navController, appBarConfiguration)
         navView.setupWithNavController(navController) // MVC view.setController(control)
-    }
-
-    private fun showFragment(index: Int) {
-        val ft: FragmentTransaction = supportFragmentManager.beginTransaction()
-//        hideFragment(ft)
-        position = index
-        when (index) {
-            FRAGMENT_NEWS -> {
-                toolbar.setTitle(R.string.app_name)
-                /**
-                 * 如果Fragment为空，就新建一个实例
-                 * 如果不为空，就将它从栈中显示出来
-                 * never happen?
-                 */
-                if (homeTableLayout == null) {
-                    Log.d(TAG, "This is happened")
-                    homeTableLayout = homeTableLayout.getInstance()
-                    //  android.R.id.content提供了视图的根元素，而不必知道它的实际名称/类型/ ID。
-                    ft.add(R.id.content, homeTableLayout, homeTableLayout::class.java.name)
-                } else {
-                    ft.show(homeTableLayout)
-                }
-            }
-            FRAGMENT_MINE -> {
-//                toolbar.setTitle(getString(R.string.title_media))
-//                if (mediaChannelView == null) {
-//                    mediaChannelView = MediaChannelView.getInstance()
-//                    ft.add(R.id.container, mediaChannelView, MediaChannelView::class.java.getName())
-//                } else {
-//                    ft.show(mediaChannelView)
-//                }
-            }
-        }
-        ft.commit()
     }
 
     // 侧边导航栏的展开按钮function
