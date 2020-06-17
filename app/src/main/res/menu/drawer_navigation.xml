@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <!--Each item id should be same as in the nav_graph fragment id-->
+
+    <item
+        android:id="@+id/homeFragment"
+        android:icon="@drawable/ic_menu_camera"
+        android:title="@string/menu_home" />
+
+    <item
+        android:id="@+id/sideFragment"
+        android:icon="@drawable/ic_menu_camera"
+        android:title="@string/menu_side" />
+
+    <item
+        android:id="@+id/settingFragment"
+        android:icon="@drawable/ic_menu_camera"
+        android:title="@string/settings" />
+
+</menu>

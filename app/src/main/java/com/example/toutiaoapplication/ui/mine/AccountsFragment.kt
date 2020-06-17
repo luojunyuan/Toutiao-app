@@ -1,4 +1,4 @@
-package com.example.toutiaoapplication.ui.setting
+package com.example.toutiaoapplication.ui.mine
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -7,13 +7,13 @@ import android.view.View
 import android.view.ViewGroup
 import com.example.toutiaoapplication.R
 
-class SettingFragment : Fragment() {
+class AccountsFragment : Fragment() {
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_setting, container, false)
+        return inflater.inflate(R.layout.fragment_accounts, container, false)
     }
 }

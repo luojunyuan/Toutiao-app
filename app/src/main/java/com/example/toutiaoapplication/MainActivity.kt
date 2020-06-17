@@ -1,38 +1,19 @@
 package com.example.toutiaoapplication
 
-import android.content.Intent
 import android.os.Bundle
-import android.util.Log
+import android.view.View
 import androidx.appcompat.app.AppCompatActivity
-import androidx.appcompat.widget.Toolbar
+import androidx.core.view.GravityCompat
 import androidx.drawerlayout.widget.DrawerLayout
-import androidx.fragment.app.FragmentTransaction
 import androidx.navigation.NavController
 import androidx.navigation.findNavController
-import androidx.navigation.ui.AppBarConfiguration
-import androidx.navigation.ui.navigateUp
-import androidx.navigation.ui.setupActionBarWithNavController
-import androidx.navigation.ui.setupWithNavController
-import com.example.toutiaoapplication.ui.home.HomeFragment
-import com.example.toutiaoapplication.ui.mine.MineActivity
-import com.example.toutiaoapplication.ui.mine.MineFragment
-import com.google.android.material.bottomnavigation.BottomNavigationView
-import com.google.android.material.navigation.NavigationView
-import kotlin.properties.Delegates
+import androidx.navigation.ui.*
+import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
 
-    companion object {
-        const val TAG = "MainActivity"
-        const val FRAGMENT_NEWS = 0
-        const val FRAGMENT_MINE = 1
-    }
-
     private lateinit var appBarConfiguration: AppBarConfiguration
-    private var position by Delegates.notNull<Int>()
-    private lateinit var toolbar: Toolbar
-    private var homeTableLayout: HomeFragment = HomeFragment().getInstance()
-    private var mineTableLayout: MineFragment = MineFragment().getInstance()
+    private lateinit var navController: NavController
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -41,45 +22,82 @@ class MainActivity : AppCompatActivity() {
         initControl()
     }
 
-    /**
-     * 创建toolbar，bottomNavigation，drawer侧边栏导航控件
-     */
     private fun initControl() {
-        // @layout.app_bar_main.xml 默认使用 CoordinatorLayout
-        toolbar = findViewById(R.id.toolbar)
-        toolbar.inflateMenu(R.menu.menu_activity_main)
-        setSupportActionBar(toolbar)
+        navController = findNavController(R.id.main_nav_host) //Initialising navController
 
-        val bottomNavigation = findViewById<BottomNavigationView>(R.id.bottom_navigation)
-        bottomNavigation.setOnNavigationItemReselectedListener {
-            when (it.itemId) {
-                // FIXME 需要按两下才能进入那个页面
-                R.id.action_mine -> startActivity(Intent(this, MineActivity::class.java))
+        appBarConfiguration = AppBarConfiguration.Builder(R.id.homeFragment, R.id.accountsFragment,
+            R.id.sideFragment, R.id.settingFragment) //Pass the ids of fragments from nav_graph which you d'ont want to show back button in toolbar
+            .setDrawerLayout(main_drawer_layout) //Pass the drawer layout id from activity xml
+            .build()
+
+        setSupportActionBar(main_toolbar) //Set toolbar
+
+        setupActionBarWithNavController(navController, appBarConfiguration) //Setup toolbar with back button and drawer icon according to appBarConfiguration
+
+        visibilityNavElements(navController) //If you want to hide drawer or bottom navigation configure that in this function
+    }
+
+    private fun visibilityNavElements(navController: NavController) {
+
+        //Listen for the change in fragment (navigation) and hide or show drawer or bottom navigation accordingly if required
+        //Modify this according to your need
+        //If you want you can implement logic to deselect(styling) the bottom navigation menu item when drawer item selected using listener
+
+        navController.addOnDestinationChangedListener { _, destination, _ ->
+            when (destination.id) {
+                R.id.settingFragment -> hideBottomNavigation()
+                else -> showBothNavigation()
             }
         }
+    }
 
-        // 以下drawer组件 in activity_main
-        // activity_main 就是一个DrawerLayout
-        val drawerLayout: DrawerLayout = findViewById(R.id.drawer_layout)
-        // drawer layout 中的导航栏
-        val navView: NavigationView = findViewById(R.id.nav_view)
-        // host fragment
-        val navController = findNavController(R.id.nav_host_fragment)
-        // Passing each menu ID as a set of Ids because each
-        // menu should be considered as top level destinations.
-        // 设置侧边drawer导航栏
-        appBarConfiguration = AppBarConfiguration(
-            setOf(
-                R.id.nav_home, R.id.nav_setting, R.id.nav_mine
-            ), drawerLayout
-        )
-        setupActionBarWithNavController(navController, appBarConfiguration)
-        navView.setupWithNavController(navController) // MVC view.setController(control)
+    private fun hideBothNavigation() { //Hide both drawer and bottom navigation bar
+        main_bottom_navigation_view?.visibility = View.GONE
+        main_navigation_view?.visibility = View.GONE
+        main_drawer_layout?.setDrawerLockMode(DrawerLayout.LOCK_MODE_LOCKED_CLOSED) //To lock navigation drawer so that it don't respond to swipe gesture
+    }
+
+    private fun hideBottomNavigation() { //Hide bottom navigation
+        main_bottom_navigation_view?.visibility = View.GONE
+        main_navigation_view?.visibility = View.VISIBLE
+        main_drawer_layout?.setDrawerLockMode(DrawerLayout.LOCK_MODE_UNLOCKED) //To unlock navigation drawer
+
+        main_navigation_view?.setupWithNavController(navController) //Setup Drawer navigation with navController
+    }
+
+    private fun showBothNavigation() {
+        main_bottom_navigation_view?.visibility = View.VISIBLE
+        main_navigation_view?.visibility = View.VISIBLE
+        main_drawer_layout?.setDrawerLockMode(DrawerLayout.LOCK_MODE_UNLOCKED)
+        setupNavControl() //To configure navController with drawer and bottom navigation
+    }
+
+    private fun setupNavControl() {
+        main_navigation_view?.setupWithNavController(navController) //Setup Drawer navigation with navController
+        main_bottom_navigation_view?.setupWithNavController(navController) //Setup Bottom navigation with navController
+    }
+
+    fun exitApp() { //To exit the application call this function from fragment
+        this.finishAffinity()
     }
 
     // 侧边导航栏的展开按钮function
-    override fun onSupportNavigateUp(): Boolean {
-        val navController = findNavController(R.id.nav_host_fragment)
-        return navController.navigateUp(appBarConfiguration) || super.onSupportNavigateUp()
+    override fun onSupportNavigateUp(): Boolean { //Setup appBarConfiguration for back arrow
+        return NavigationUI.navigateUp(navController, appBarConfiguration)
+    }
+
+    override fun onBackPressed() {
+        when { //If drawer layout is open close that on back pressed
+            main_drawer_layout.isDrawerOpen(GravityCompat.START) -> {
+                main_drawer_layout.closeDrawer(GravityCompat.START)
+            }
+            else -> {
+                super.onBackPressed() //If drawer is already in closed condition then go back
+            }
+        }
+    }
+
+    companion object {
+        const val TAG = "MainActivity"
     }
 }

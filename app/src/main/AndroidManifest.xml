@@ -24,11 +24,6 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity
-            android:label="我的页面"
-            android:name=".ui.mine.MineActivity"
-            android:parentActivityName=".MainActivity"/>
-
     </application>
 
 </manifest>

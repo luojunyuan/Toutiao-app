@@ -10,7 +10,5 @@ interface HomeContract {
         fun prepareRecyclerViewAdapter(recyclerView: RecyclerView)
     }
 
-    interface View : BaseView<Presenter> {
-        fun showDetail()
-    }
+    interface View : BaseView<Presenter>
 }

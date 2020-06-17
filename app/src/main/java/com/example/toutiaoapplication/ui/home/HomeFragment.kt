@@ -18,21 +18,12 @@ class HomeFragment : Fragment(), HomeContract.View {
     companion object {
         private var instance: HomeFragment? = null
     }
-    override var presenter: HomeContract.Presenter
-        get() = HomePresenter(this)
-        set(value) {}
+    override lateinit var presenter: HomeContract.Presenter
 
     private lateinit var progressBar: ProgressBar
     private lateinit var viewManager: RecyclerView.LayoutManager
     private lateinit var recyclerView: RecyclerView
     var viewAdapter: HomeAdapter? = null
-
-    fun getInstance(): HomeFragment {
-        if (instance == null) {
-            instance = HomeFragment()
-        }
-        return instance as HomeFragment
-    }
 
     override fun onCreateView(
             inflater: LayoutInflater,
@@ -48,6 +39,7 @@ class HomeFragment : Fragment(), HomeContract.View {
     }
 
     private fun initData() {
+        presenter = HomePresenter(this)
         presenter.prepareRecyclerViewAdapter(recyclerView)
     }
 
@@ -71,9 +63,5 @@ class HomeFragment : Fragment(), HomeContract.View {
                     toast("点击打开")
                 }
             }))
-    }
-
-    override fun showDetail() {
-        TODO("Not yet implemented")
     }
 }
