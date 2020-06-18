@@ -155,11 +155,14 @@
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="64dp"
-                    android:orientation="horizontal">
+                    android:orientation="horizontal"
+                    style="?android:attr/buttonBarStyle">
 
-                    <TextView
+                    <Button
                         android:id="@+id/tv_1"
                         android:layout_width="0dp"
+                        style="?android:attr/buttonBarButtonStyle"
+                        android:background="@drawable/item_click_style"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
                         android:layout_weight="1"
@@ -170,9 +173,11 @@
                         android:textColor="#000000"
                         android:textSize="12sp" />
 
-                    <TextView
+                    <Button
                         android:id="@+id/tv_2"
                         android:layout_width="0dp"
+                        style="?android:attr/buttonBarButtonStyle"
+                        android:background="@drawable/item_click_style"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
                         android:layout_weight="1"
@@ -183,9 +188,11 @@
                         android:textColor="#000000"
                         android:textSize="12sp" />
 
-                    <TextView
+                    <Button
                         android:id="@+id/tv_3"
+                        android:background="@drawable/item_click_style"
                         android:layout_width="0dp"
+                        style="?android:attr/buttonBarButtonStyle"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
                         android:layout_weight="1"
@@ -201,6 +208,7 @@
                 <!--     分界线   -->
                 <View
                     android:id="@+id/ll_line1"
+                    android:background="@color/divider_color"
                     android:layout_width="match_parent"
                     android:layout_height="10dp"/>
 
@@ -212,22 +220,23 @@
                     android:layout_marginRight="15dp"
                     android:orientation="horizontal">
 
-                    <TextView
+                    <Button
                         android:id="@+id/tv_11"
                         android:layout_width="match_parent"
                         android:layout_height="50dp"
-                        android:background="#FFFFFF"
+                        android:background="@drawable/item_click_style"
                         android:drawableEnd="@drawable/ic_right_arrow_grey"
                         android:gravity="center_vertical"
                         android:text="@string/msg"
                         android:textColor="#000000"
-                        android:textSize="18sp" />
+                        android:textSize="16sp" />
 
                 </RelativeLayout>
 
                 <!--     分界线   -->
                 <View
                     android:id="@+id/ll_line3"
+                    android:background="@color/divider_color"
                     android:layout_width="match_parent"
                     android:layout_height="10dp"/>
 
@@ -246,15 +255,15 @@
                     android:layout_marginRight="15dp"
                     android:orientation="horizontal">
 
-                    <TextView
+                    <Button
                         android:layout_width="match_parent"
                         android:layout_height="50dp"
-                        android:background="#FFFFFF"
+                        android:background="@drawable/item_click_style"
                         android:drawableEnd="@drawable/ic_right_arrow_grey"
                         android:gravity="center_vertical"
                         android:text="@string/feedback"
                         android:textColor="#000000"
-                        android:textSize="18sp" />
+                        android:textSize="16sp" />
                 </RelativeLayout>
                 <!--     分界线   -->
                 <View
@@ -274,11 +283,12 @@
                     <Button
                         android:layout_width="match_parent"
                         android:layout_height="50dp"
+                        android:background="@drawable/item_click_style"
                         android:drawableEnd="@drawable/ic_right_arrow_grey"
                         android:gravity="center_vertical"
                         android:text="@string/account_set"
                         android:textColor="#000000"
-                        android:textSize="18sp" />
+                        android:textSize="16sp" />
                 </RelativeLayout>
 
 <!--                <View-->
