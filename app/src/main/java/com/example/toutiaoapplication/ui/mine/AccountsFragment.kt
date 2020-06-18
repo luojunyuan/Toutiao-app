@@ -1,15 +1,14 @@
 package com.example.toutiaoapplication.ui.mine
 
+import android.content.Intent
 import android.os.Bundle
-import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import com.example.toutiaoapplication.R
-import kotlinx.android.synthetic.main.fragment_accounts.*
-import kotlinx.android.synthetic.main.item_news_article_text.*
+import com.example.toutiaoapplication.ui.login.LoginActivity
 
 class AccountsFragment : Fragment(), View.OnClickListener{
 
@@ -26,7 +25,7 @@ class AccountsFragment : Fragment(), View.OnClickListener{
 
     override fun onClick(view: View) {
         when (view.id) {
-            R.id.ll_top -> Log.d(TAG, "clicked!")
+            R.id.ll_top -> startActivity(Intent(this.context, LoginActivity::class.java))
         }
     }
 

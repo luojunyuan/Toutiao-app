@@ -19,3 +19,5 @@ fun Fragment.toast(message: String) {
 fun Fragment.toast(resId: Int) {
     Toast.makeText(activity, resId, Toast.LENGTH_SHORT).show()
 }
+
+fun String.isValid(): Boolean = this.matches(Regex("^.{4,20}$")) // 长度为3到20的所有字符 $?
