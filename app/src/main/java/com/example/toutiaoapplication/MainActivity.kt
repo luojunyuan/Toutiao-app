@@ -1,6 +1,9 @@
 package com.example.toutiaoapplication
 
 import android.os.Bundle
+import android.os.Handler
+import android.os.Looper
+import android.util.Log
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.GravityCompat
@@ -8,7 +11,14 @@ import androidx.drawerlayout.widget.DrawerLayout
 import androidx.navigation.NavController
 import androidx.navigation.findNavController
 import androidx.navigation.ui.*
+import com.example.toutiaoapplication.repo.ApiServers
+import com.example.toutiaoapplication.repo.entities.LoginPayload
+import com.example.toutiaoapplication.repo.entities.ResponseUser
+import com.example.toutiaoapplication.utils.isAlreadyLogged
 import kotlinx.android.synthetic.main.activity_main.*
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
 
 class MainActivity : AppCompatActivity() {
 
@@ -19,7 +29,33 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
+        if(isAlreadyLogged(this)){
+            // may need
+            activeLoginStatus()
+        }
+
         initControl()
+    }
+
+    private fun activeLoginStatus() {
+        val handler = Handler(Looper.getMainLooper())
+        handler.post {
+            ApiServers().getApiService().loginUser(LoginPayload("admin", "123456"))
+                .enqueue(object : Callback<ResponseUser>{
+                    override fun onFailure(call: Call<ResponseUser>, t: Throwable) {
+                        Log.d(TAG, t.printStackTrace().toString())
+                    }
+
+                    override fun onResponse(
+                        call: Call<ResponseUser>,
+                        response: Response<ResponseUser>
+                    ) {
+                       if (response.body() != null) Log.d(TAG, response.body().toString())
+                        else Log.d(TAG, response.message())
+                    }
+
+                })
+        }
     }
 
     /**

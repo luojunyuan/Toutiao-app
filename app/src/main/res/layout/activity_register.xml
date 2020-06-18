@@ -1,0 +1,171 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/container"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    tools:context=".ui.login.LoginActivity">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="32dp"
+        android:gravity="center"
+        android:text="@string/action_register"
+        android:textColor="@color/colorPrimary"
+        android:textSize="24sp"
+        app:layout_constraintBottom_toTopOf="@+id/username"
+        app:layout_constraintEnd_toStartOf="@id/guidine12"
+        app:layout_constraintStart_toEndOf="@+id/guidine11" />
+
+    <EditText
+        android:id="@+id/username"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
+        android:layout_marginEnd="24dp"
+        android:autofillHints="@string/prompt_email"
+        android:drawableStart="@drawable/ic_person_login_24dp"
+        android:hint="@string/prompt_email"
+        android:inputType="textEmailAddress"
+        android:selectAllOnFocus="true"
+        android:textCursorDrawable="@drawable/style_login_edit_text"
+        android:theme="@style/logineET"
+        app:layout_constraintBottom_toBottomOf="@+id/guidine1"
+        app:layout_constraintEnd_toStartOf="@id/guidine12"
+        app:layout_constraintStart_toEndOf="@+id/guidine11" />
+
+    <EditText
+        android:id="@+id/password_1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="24dp"
+        android:autofillHints="@string/prompt_password"
+        android:drawableStart="@drawable/ic_password_login_24dp"
+        android:hint="@string/prompt_password"
+        android:imeActionLabel="@string/action_sign_in_short"
+        android:imeOptions="actionDone"
+        android:inputType="textPassword"
+        android:selectAllOnFocus="true"
+        android:textCursorDrawable="@drawable/style_login_edit_text"
+        android:theme="@style/logineET"
+        app:layout_constraintBottom_toBottomOf="@+id/guidine2"
+        app:layout_constraintEnd_toStartOf="@id/guidine12"
+        app:layout_constraintStart_toEndOf="@+id/guidine11" />
+
+    <EditText
+        android:id="@+id/password_2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="24dp"
+        android:autofillHints="@string/prompt_password"
+        android:drawableStart="@drawable/ic_password_login_24dp"
+        android:hint="@string/confirm_password"
+        android:imeOptions="actionDone"
+        android:inputType="textPassword"
+        android:selectAllOnFocus="true"
+        android:textCursorDrawable="@drawable/style_login_edit_text"
+        android:theme="@style/logineET"
+        app:layout_constraintBottom_toBottomOf="@+id/guidine3"
+        app:layout_constraintEnd_toStartOf="@id/guidine12"
+        app:layout_constraintStart_toEndOf="@+id/guidine11" />
+
+    <EditText
+        android:id="@+id/email"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="24dp"
+        android:autofillHints="@string/prompt_email"
+        android:drawableStart="@drawable/ic_mail_register_30dp"
+        android:hint="@string/email"
+        android:imeActionLabel="@string/action_sign_in_short"
+        android:imeOptions="actionDone"
+        android:inputType="textEmailAddress"
+        android:selectAllOnFocus="true"
+        android:textCursorDrawable="@drawable/style_login_edit_text"
+        android:theme="@style/logineET"
+        app:layout_constraintBottom_toBottomOf="@+id/guidine4"
+        app:layout_constraintEnd_toStartOf="@id/guidine12"
+        app:layout_constraintStart_toEndOf="@+id/guidine11" />
+
+    <Button
+        android:id="@+id/register"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="start"
+        android:layout_marginStart="48dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="48dp"
+        android:layout_marginBottom="64dp"
+        android:background="@color/colorPrimary"
+        android:text="@string/action_register"
+        android:textColor="#FFFFFF"
+        android:textSize="18sp"
+        app:layout_constraintEnd_toStartOf="@id/guidine12"
+        app:layout_constraintStart_toEndOf="@+id/guidine11"
+        app:layout_constraintTop_toBottomOf="@+id/guidine4"
+        app:layout_constraintVertical_bias="0.2" />
+    <!--    android:enabled="false"-->
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guidine1"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.30" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guidine2"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.40" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guidine3"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.50" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guidine4"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.60" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guidine5"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.95"
+
+        />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guidine11"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.1" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guidine12"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.90" />
+</androidx.constraintlayout.widget.ConstraintLayout>
