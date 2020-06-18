@@ -3,12 +3,15 @@ package com.example.toutiaoapplication.ui.login
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import com.example.toutiaoapplication.R
+import com.example.toutiaoapplication.repo.entities.User
+import com.example.toutiaoapplication.utils.saveUserInfo
 import com.example.toutiaoapplication.utils.toast
 import kotlinx.android.synthetic.main.activity_login.*
 
 class LoginActivity : AppCompatActivity(), LoginContract.View {
-    override fun onLoginSuccess(userName: String) {
-        toast("登入成功，欢迎您 $userName")
+    override fun onLoginSuccess(user: User) {
+        toast("登入成功，欢迎您 ${user.username}")
+        saveUserInfo(this, user)
         finish()
     }
 

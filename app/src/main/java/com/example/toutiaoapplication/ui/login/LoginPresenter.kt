@@ -1,11 +1,9 @@
 package com.example.toutiaoapplication.ui.login
 
-import android.os.Looper
-import android.os.Handler
 import android.util.Log
 import com.example.toutiaoapplication.repo.ApiServers
 import com.example.toutiaoapplication.repo.entities.LoginPayload
-import com.example.toutiaoapplication.repo.entities.User
+import com.example.toutiaoapplication.repo.entities.ResponseUser
 import com.example.toutiaoapplication.utils.isValid
 import retrofit2.Call
 import retrofit2.Callback
@@ -22,19 +20,19 @@ class LoginPresenter(val view: LoginContract.View) : LoginContract.Presenter {
 
     private fun testLogin(payload: LoginPayload) {
         ApiServers().getApiService().loginUser(payload)
-            .enqueue(object : Callback<User> {
-                override fun onFailure(call: Call<User>, t: Throwable) {
+            .enqueue(object : Callback<ResponseUser> {
+                override fun onFailure(call: Call<ResponseUser>, t: Throwable) {
                     Log.d(TAG, "on failure $t")
                     uiThread { view.onLoginFailed() }
                 }
 
-                override fun onResponse(call: Call<User>, response: Response<User>) {
+                override fun onResponse(call: Call<ResponseUser>, response: Response<ResponseUser>) {
                     Log.d(TAG, "on response: $response")
                     response.body()?.let {
                         Log.d(TAG, "返回: $it")
                         when (it.ret_code) {
                             "-1" -> uiThread { view.errorInfo() }
-                            "0" -> uiThread { view.onLoginSuccess(it.data.username) }
+                            "0" -> uiThread { view.onLoginSuccess(it.data) }
                             else -> Log.d(TAG, it.ret_code)
                         }
                     }

@@ -2,12 +2,12 @@ package com.example.toutiaoapplication.repo.entities
 
 import com.google.gson.annotations.SerializedName
 
-data class User(
+data class ResponseUser(
     @SerializedName("code") val ret_code: String,
-    @SerializedName("data") val data: Data
+    @SerializedName("data") val data: User
 )
 
-data class Data(
+data class User(
     @SerializedName("aid") val aid : Int,
     @SerializedName("udesc") val descriptor : String,// 简介
     @SerializedName("uid") val uid : Int,

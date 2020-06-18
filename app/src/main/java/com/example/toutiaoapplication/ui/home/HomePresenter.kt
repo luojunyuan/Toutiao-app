@@ -1,12 +1,8 @@
 package com.example.toutiaoapplication.ui.home
 
 import android.util.Log
-import androidx.recyclerview.widget.RecyclerView
 import com.example.toutiaoapplication.repo.ApiServers
-import com.example.toutiaoapplication.repo.entities.News
 import com.example.toutiaoapplication.repo.entities.ResponseNews
-import com.example.toutiaoapplication.repo.entities.Tmp
-import com.example.toutiaoapplication.repo.entities.User
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
