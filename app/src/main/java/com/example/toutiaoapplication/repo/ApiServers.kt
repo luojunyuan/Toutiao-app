@@ -19,7 +19,6 @@ class ApiServers {
     }
 
     companion object {
-//        const val URL = "https://api.apiopen.top/"
         const val URL = "http://192.168.0.105:8000/"
     }
 }

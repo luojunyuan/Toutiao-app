@@ -29,6 +29,9 @@ class MainActivity : AppCompatActivity() {
         initControl()
     }
 
+    /**
+     * 初始化底部，侧边相关的组件
+     */
     private fun initControl() {
         navController = findNavController(R.id.main_nav_host) //Initialising navController
 

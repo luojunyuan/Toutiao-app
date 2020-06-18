@@ -7,12 +7,9 @@ import com.example.toutiaoapplication.repo.ApiServers
 import com.example.toutiaoapplication.repo.entities.LoginPayload
 import com.example.toutiaoapplication.repo.entities.User
 import com.example.toutiaoapplication.utils.isValid
-import com.google.gson.JsonObject
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
-
-const val TAG = "LoginPresenter"
 
 class LoginPresenter(val view: LoginContract.View) : LoginContract.Presenter {
 
@@ -45,17 +42,11 @@ class LoginPresenter(val view: LoginContract.View) : LoginContract.Presenter {
             })
     }
 
-    companion object {
-        val handler by lazy {
-            Handler(Looper.getMainLooper())
-        }
-    }
-
-    private fun uiThread(f: () -> Unit) {
-        handler.post{ f() }
-    }
-
     override fun start() {
         TODO("Not yet implemented")
+    }
+
+    companion object {
+        const val TAG = "LoginPresenter"
     }
 }
