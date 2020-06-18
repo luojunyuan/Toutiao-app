@@ -110,5 +110,16 @@
     <string name="menu_accounts">账号</string>
     <string name="menu_side">侧边页面</string>
     <string name="setting_fragment">settingFragment</string>
+    <string name="_7">7天访客</string>
+    <string name="fans">粉丝</string>
+    <string name="dong_tai">动态</string>
+    <string name="login_tip">未登录(点击登录)</string>
+    <string name="todo">descript</string>
+    <string name="star">收藏</string>
+    <string name="history">历史</string>
+    <string name="night">夜间</string>
+    <string name="feedback">用户反馈</string>
+    <string name="account_set">账号设置</string>
+    <string name="msg">消息通知</string>
 
 </resources>
