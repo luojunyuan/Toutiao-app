@@ -9,8 +9,9 @@ interface LoginContract {
     }
 
     interface View : BaseView<Presenter>{
-        fun onLoginSuccess()
+        fun onLoginSuccess(userName: String)
         fun onLoginFailed()
         fun showInputError()
+        fun errorInfo()
     }
 }

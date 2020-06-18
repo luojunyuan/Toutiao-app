@@ -6,18 +6,20 @@ import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
 class ApiServers {
-    private val URL = "https://api.apiopen.top/"
 
     // 返回api接口
-    fun getApiService(): NewsApi {
+    fun getApiService(): Apis {
 
         val gson: Gson = GsonBuilder().setLenient().create()
         val retrofit: Retrofit = Retrofit.Builder()
             .baseUrl(URL)
-//            .client(getUnsafeOkHttpClient())
             .addConverterFactory(GsonConverterFactory.create(gson))
             .build()
+        return retrofit.create(Apis::class.java)
+    }
 
-        return retrofit.create(NewsApi::class.java)
+    companion object {
+//        const val URL = "https://api.apiopen.top/"
+        const val URL = "http://192.168.0.105:8000/"
     }
 }

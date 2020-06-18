@@ -7,8 +7,8 @@ import com.example.toutiaoapplication.utils.toast
 import kotlinx.android.synthetic.main.activity_login.*
 
 class LoginActivity : AppCompatActivity(), LoginContract.View {
-    override fun onLoginSuccess() {
-        toast("登入成功")
+    override fun onLoginSuccess(userName: String) {
+        toast("登入成功，欢迎您 $userName")
         finish()
     }
 
@@ -18,6 +18,10 @@ class LoginActivity : AppCompatActivity(), LoginContract.View {
 
     override fun showInputError() {
         toast("用户名或密码输入不规范")
+    }
+
+    override fun errorInfo() {
+        toast("用户名或密码错误")
     }
 
     override lateinit var presenter: LoginContract.Presenter
