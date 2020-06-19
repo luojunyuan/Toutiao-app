@@ -39,6 +39,7 @@ class HomeFragment : Fragment(), HomeContract.View {
 
         presenter = HomePresenter(this)
         initView(rootView)
+        // initData
         presenter.requestData()
 
         return rootView

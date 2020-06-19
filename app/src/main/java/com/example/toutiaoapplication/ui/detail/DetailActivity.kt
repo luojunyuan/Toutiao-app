@@ -1,14 +1,15 @@
 package com.example.toutiaoapplication.ui.detail
 
+import android.content.Intent
 import android.os.Bundle
-import android.util.Log
-import com.google.android.material.appbar.CollapsingToolbarLayout
-import com.google.android.material.floatingactionbutton.FloatingActionButton
-import com.google.android.material.snackbar.Snackbar
+import android.view.Menu
+import android.view.MenuItem
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.example.toutiaoapplication.R
-import com.example.toutiaoapplication.utils.EXTRA_MESSAGE
+import kotlinx.android.synthetic.main.activity_detail.*
 import kotlinx.android.synthetic.main.content_scrolling.*
+
 
 class DetailActivity : AppCompatActivity(), DetailContract.View {
 
@@ -25,14 +26,31 @@ class DetailActivity : AppCompatActivity(), DetailContract.View {
 
 
         setSupportActionBar(findViewById(R.id.toolbar))
-        findViewById<CollapsingToolbarLayout>(R.id.toolbar_layout).title = title
+        toolbar_layout.title = title
         detail_content.text = content
 
+        toolbar.setNavigationIcon(R.drawable.ic_menu_camera)
+        toolbar.setOnMenuItemClickListener { item ->
+            when (item.itemId) {
+                R.id.comment -> {
+                    val intent = Intent(this, CommentsActivity::class.java).apply {
+                        putExtra("tid", tid)
+                    }
+                    startActivity(intent)
+                }
+            }
+            false
+        }
         // none use fab
 //        findViewById<FloatingActionButton>(R.id.fab).setOnClickListener { view ->
 //            Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
 //                .setAction("Action", null).show()
 //        }
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+        menuInflater.inflate(R.menu.menu_detail,menu)
+        return super.onCreateOptionsMenu(menu)
     }
 
     companion object {

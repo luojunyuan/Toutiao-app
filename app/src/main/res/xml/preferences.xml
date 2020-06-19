@@ -1,0 +1,58 @@
+<PreferenceScreen
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <PreferenceCategory
+        android:title="@string/basic_preferences">
+
+        <Preference
+            android:key="preference"
+            android:title="@string/title_basic_preference"
+            android:summary="@string/summary_basic_preference"/>
+
+        <Preference
+            android:key="stylized"
+            android:title="@string/title_stylish_preference"
+            android:summary="@string/summary_stylish_preference"/>
+
+        <Preference
+            android:key="icon"
+            android:title="@string/title_icon_preference"
+            android:summary="@string/summary_icon_preference"
+            android:icon="@android:drawable/ic_menu_camera"/>
+
+        <Preference
+            android:key="single_line_title"
+            android:title="@string/title_single_line_title_preference"
+            android:summary="@string/summary_single_line_title_preference"
+            app:singleLineTitle="true"/>
+    </PreferenceCategory>
+
+    <PreferenceCategory
+        android:title="@string/widgets">
+
+        <CheckBoxPreference
+            android:key="checkbox"
+            android:title="@string/title_checkbox_preference"
+            android:summary="@string/summary_checkbox_preference"/>
+
+        <SwitchPreferenceCompat
+            android:key="switch"
+            android:title="@string/title_switch_preference"
+            android:summary="@string/summary_switch_preference"/>
+
+        <DropDownPreference
+            android:key="dropdown"
+            android:title="@string/title_dropdown_preference"
+            android:entries="@array/entries"
+            app:useSimpleSummaryProvider="true"
+            android:entryValues="@array/entry_values"/>
+
+        <SeekBarPreference
+            android:key="seekbar"
+            android:title="@string/title_seekbar_preference"
+            android:max="10"
+            android:defaultValue="5"/>
+    </PreferenceCategory>
+
+</PreferenceScreen>

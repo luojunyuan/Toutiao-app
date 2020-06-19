@@ -129,5 +129,22 @@
     <string name="action_register">注 册</string>
     <string name="confirm_password">再次输入密码</string>
     <string name="email">邮箱</string>
+    <string name="basic_preferences">设置</string>
+    <string name="title_basic_preference">基本设置</string>
+    <string name="summary_basic_preference">目录</string>
+    <string name="title_stylish_preference">标题风格设置</string>
+    <string name="summary_stylish_preference">目录风格设置</string>
+    <string name="title_icon_preference">标题图标设置</string>
+    <string name="summary_icon_preference">目录图标设置</string>
+    <string name="title_single_line_title_preference">标题占用一行</string>
+    <string name="summary_single_line_title_preference">标题占用一行</string>
+    <string name="widgets">组件</string>
+    <string name="title_checkbox_preference">标题复选框</string>
+    <string name="summary_checkbox_preference">标题复选框</string>
+    <string name="title_switch_preference">标题切换</string>
+    <string name="summary_switch_preference">标题切换</string>
+    <string name="title_dropdown_preference">标题划下</string>
+    <string name="title_seekbar_preference">seekbar</string>
+    <string name="menu_comment">评论</string>
 
 </resources>

@@ -35,6 +35,7 @@ dependencies {
     // 不知道是啥
     implementation fileTree(dir: "libs", include: ["*.jar"])
     // 手动添加的库
+    implementation 'androidx.preference:preference:1.1.1'
     implementation 'com.squareup.retrofit2:retrofit:2.9.0'
     implementation 'com.squareup.retrofit2:converter-gson:2.9.0'
     // 以下新建项目自带的
