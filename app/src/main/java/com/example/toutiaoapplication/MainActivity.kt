@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
 import android.util.Log
+import android.view.Menu
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.GravityCompat
@@ -134,6 +135,11 @@ class MainActivity : AppCompatActivity() {
                 super.onBackPressed() //If drawer is already in closed condition then go back
             }
         }
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+        menuInflater.inflate(R.menu.menu_home, menu)
+        return super.onCreateOptionsMenu(menu)
     }
 
     companion object {

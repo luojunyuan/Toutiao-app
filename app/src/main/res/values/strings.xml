@@ -149,5 +149,8 @@
     <string name="logout">退出登录</string>
     <string name="update">修改信息</string>
     <string name="menu_iine">点赞</string>
+    <string name="new_thread">发表新主题</string>
+    <string name="avatar">Avatar</string>
+    <string name="fit">点赞</string>
 
 </resources>

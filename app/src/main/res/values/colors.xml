@@ -12,5 +12,6 @@
     <color name="ripple_color">#c8c8c8</color>
     <color name="white">#ffffff</color>
     <color name="windowBackground">@android:color/white</color>
-
+    <color name="common_gray">#A9A9A9</color>
+    <color name="common_deep_blue">#1E90FF</color>
 </resources>
