@@ -32,7 +32,8 @@ class LoginPresenter(val view: LoginContract.View) : LoginContract.Presenter {
                         Log.d(TAG, "返回: $it")
                         when (it.ret_code) {
                             "-1" -> uiThread { view.errorInfo() }
-                            "0" -> uiThread { view.onLoginSuccess(it.data) }
+                            // "0" -> uiThread { view.onLoginSuccess(it.data) }
+                            "1" -> uiThread { view.onLoginSuccess(it.data) }
                             else -> Log.d(TAG, it.ret_code)
                         }
                     }

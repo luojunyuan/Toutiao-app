@@ -7,4 +7,8 @@
         android:icon="@drawable/ic_menu_camera"
         android:title="@string/menu_comment" />
 
+    <item
+        android:id="@+id/good"
+        android:icon="@drawable/ic_menu_camera"
+        android:title="@string/menu_iine" />
 </menu>

@@ -1,9 +1,12 @@
 package com.example.toutiaoapplication.ui.login
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.widget.TextView
 import com.example.toutiaoapplication.R
 import com.example.toutiaoapplication.repo.entities.User
+import com.example.toutiaoapplication.ui.register.RegisterActivity
 import com.example.toutiaoapplication.utils.saveUserInfo
 import com.example.toutiaoapplication.utils.toast
 import kotlinx.android.synthetic.main.activity_login.*
@@ -42,6 +45,10 @@ class LoginActivity : AppCompatActivity(), LoginContract.View {
             val userName = username.text.trim().toString()
             val password = password.text.trim().toString()
             presenter.login(userName, password)
+        }
+        go_register.setOnClickListener{
+            val intent = Intent(this, RegisterActivity::class.java)
+            startActivity(intent)
         }
     }
 }

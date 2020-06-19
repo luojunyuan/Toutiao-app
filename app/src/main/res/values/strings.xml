@@ -2,8 +2,8 @@
     <string name="app_name">Toutiao Application</string>
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
-    <string name="nav_header_title">Android Studio</string>
-    <string name="nav_header_subtitle">android.studio@android.com</string>
+    <string name="nav_header_title">CUIT</string>
+    <string name="nav_header_subtitle">www.cuit.edu.cn</string>
     <string name="nav_header_desc">Navigation header</string>
     <string name="action_settings">Settings</string>
 
@@ -146,5 +146,8 @@
     <string name="title_dropdown_preference">标题划下</string>
     <string name="title_seekbar_preference">seekbar</string>
     <string name="menu_comment">评论</string>
+    <string name="logout">退出登录</string>
+    <string name="update">修改信息</string>
+    <string name="menu_iine">点赞</string>
 
 </resources>
