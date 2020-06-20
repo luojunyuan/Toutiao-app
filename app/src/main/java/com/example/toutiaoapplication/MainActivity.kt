@@ -16,11 +16,15 @@ import androidx.navigation.ui.*
 import com.example.toutiaoapplication.repo.ApiServers
 import com.example.toutiaoapplication.repo.entities.LoginPayload
 import com.example.toutiaoapplication.repo.entities.ResponseUser
+import com.example.toutiaoapplication.utils.URL
+import com.example.toutiaoapplication.utils.getPortSP
 import com.example.toutiaoapplication.utils.isAlreadyLogged
+import com.example.toutiaoapplication.utils.loadSavedUserInfo
 import kotlinx.android.synthetic.main.activity_main.*
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
+import kotlin.properties.Delegates
 
 class MainActivity : AppCompatActivity() {
 
@@ -32,19 +36,24 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        if(isAlreadyLogged(this)){
+        instance = this
+
+        URL = getPortSP(this)!!
+
+        // if(isAlreadyLogged(this)){
             // may need
-            activeLoginStatus()
-        }
+            // activeLoginStatus()
+        // }
 
         initControl()
     }
 
     private fun activeLoginStatus() {
+        val userInfo = loadSavedUserInfo(this)
         val handler = Handler(Looper.getMainLooper())
         handler.post {
-            ApiServers().getApiService().loginUser(LoginPayload("admin", "123456"))
-                .enqueue(object : Callback<ResponseUser>{
+            ApiServers().getApiService().loginUser(LoginPayload(userInfo.username, "123456"))
+                .enqueue(object : Callback<ResponseUser> {
                     override fun onFailure(call: Call<ResponseUser>, t: Throwable) {
                         Log.d(TAG, t.printStackTrace().toString())
                     }
@@ -53,8 +62,11 @@ class MainActivity : AppCompatActivity() {
                         call: Call<ResponseUser>,
                         response: Response<ResponseUser>
                     ) {
-                       if (response.body() != null) Log.d(TAG, response.body().toString())
-                        else Log.d(TAG, response.message())
+                        if (response.isSuccessful) {
+                            Log.d(TAG, response.body().toString())
+                        } else {
+                            Log.d("NetWork", response.message())
+                        }
                     }
 
                 })
@@ -141,5 +153,6 @@ class MainActivity : AppCompatActivity() {
 
     companion object {
         const val TAG = "MainActivity"
+        var instance: MainActivity by Delegates.notNull()
     }
 }

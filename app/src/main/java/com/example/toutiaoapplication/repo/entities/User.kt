@@ -13,6 +13,7 @@ data class User(
     @SerializedName("uid") val uid : Int,
     @SerializedName("umail") val email : String,
     @SerializedName("uname") val username : String,
-    @SerializedName("ustat") val ban : Int,// 0正常，1封禁
-    @SerializedName("utime") val register_day : Long// 注册时间 datetime? 注意大小 1592276029000
+    @SerializedName("ustat") val ban : Int, // 0正常，1封禁
+    @SerializedName("utime") val register_day : Long, // 注册时间 datetime? 注意大小 1592276029000
+    var cookie: String
 )

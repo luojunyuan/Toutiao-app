@@ -156,5 +156,14 @@
     <string name="port_setting">端口设置</string>
     <string name="summary_port_setting">设置服务器api访问的地址（以 / 结尾）</string>
     <string name="add_Comment">添加评论</string>
-
+    <string name="other">其他</string>
+    <string name="exit">退出应用</string>
+    <string name="post">POST</string>
+    <string name="input_title">在这儿输入标题</string>
+    <string name="dev_tool">开发者工具</string>
+    <string name="check_login">检查登入状态</string>
+    <string name="label_forum_num">分区：</string>
+    <string-array name="forum_array">
+        <item>主页 - 1</item>
+    </string-array>
 </resources>

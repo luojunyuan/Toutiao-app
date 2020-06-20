@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="16dp"
+    tools:ignore="LabelFor"
+    tools:context=".ui.home.NewThreadActivity">
+
+
+    <EditText
+        android:id="@+id/insert_title"
+        android:layout_width="0dp"
+        android:layout_height="40dp"
+        android:background="@drawable/edit_shape"
+        android:hint="@string/input_title"
+        android:textAlignment="viewStart"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:autofillHints="Title"
+        android:inputType="text" />
+
+    <Spinner
+        android:id="@+id/forum_spinner"
+        android:layout_width="128dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toEndOf="@+id/textView2"
+        app:layout_constraintTop_toTopOf="@+id/textView2" />
+
+    <EditText
+        android:id="@+id/contentArea"
+        android:layout_width="0dp"
+        android:layout_height="190dp"
+        android:layout_marginTop="16dp"
+        android:autofillHints="content"
+        android:background="@drawable/edit_shape"
+        android:ems="10"
+        android:gravity="start|top"
+        android:inputType="textMultiLine"
+        app:layout_constraintEnd_toEndOf="@+id/insert_title"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/insert_title"
+        app:layout_constraintTop_toBottomOf="@+id/forum_spinner" />
+
+    <Button
+        android:id="@+id/buttonPost"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="@string/post"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/contentArea" />
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="@string/label_forum_num"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/insert_title" />
+</androidx.constraintlayout.widget.ConstraintLayout>

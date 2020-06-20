@@ -38,6 +38,7 @@ fun saveUserInfo(context: Context, user: User) {
         putInt("ustat", user.ban)
         putLong("utime", user.register_day)
         putBoolean("save_flag", true)
+        putString("cookie", user.cookie)
         apply()
     }
 }
@@ -56,7 +57,8 @@ fun loadSavedUserInfo(context: Context): User {
         email = sp.getString("umail", "")!!,
         username = sp.getString("uname", "")!!,
         ban = sp.getInt("ustat", -1),
-        register_day = sp.getLong("utime", -1)
+        register_day = sp.getLong("utime", -1),
+        cookie = sp.getString("cookie", "no cookie")!!
     )
 }
 
@@ -70,6 +72,7 @@ fun clearUserInfo(context: Context) {
         remove("uname")
         remove("ustat")
         remove("utime")
+        remove("cookie")
         putBoolean("save_flag", false)
         apply()
     }

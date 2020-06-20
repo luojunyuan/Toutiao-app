@@ -64,7 +64,8 @@ class AccountsFragment : Fragment(), View.OnClickListener{
             R.id.userInfoSetting -> if (loginState) { startActivity(
                 Intent(this.context, UserSettingActivity::class.java)
             )} else toast("请先登录")
-            R.id.tv_1 -> startActivity(Intent(this.context, CollectActivity::class.java))
+            R.id.tv_1 -> startActivity(
+                Intent(this.context, CollectActivity::class.java))
         }
     }
 

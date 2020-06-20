@@ -3,7 +3,6 @@ package com.example.toutiaoapplication.ui.login
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.widget.TextView
 import com.example.toutiaoapplication.R
 import com.example.toutiaoapplication.repo.entities.User
 import com.example.toutiaoapplication.ui.register.RegisterActivity

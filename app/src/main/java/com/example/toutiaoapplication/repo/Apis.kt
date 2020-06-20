@@ -2,6 +2,7 @@ package com.example.toutiaoapplication.repo
 
 import com.example.toutiaoapplication.repo.entities.*
 import retrofit2.Call
+import retrofit2.Response
 import retrofit2.http.*
 
 
@@ -35,7 +36,8 @@ interface Apis {
     /**
      * 登陆状态检查
      */
-    // /api/check
+    @GET("/api/check")
+    fun checkLogin(): Call<CheckResponse>
 
     // 通过uid获取用户所有评论
     @GET("/api/ucomm/{uid}")
@@ -47,6 +49,8 @@ interface Apis {
     @GET("/api/comm/{cid}")
     fun getComment(@Path("cid") cid: Int)
 
+    // session 保持
+    // https://blog.csdn.net/Kedongyu_/article/details/82662795
     @Headers("Content-Type: application/json")
     @POST("api/login")
     fun loginUser(@Body payload: LoginPayload): Call<ResponseUser>
@@ -54,7 +58,9 @@ interface Apis {
     /**
      * 添加主题
      */
-    // "/api/thread"
+    //
+    @POST("/api/thread")
+    fun createThread(@Body payload: ThreadPayload): Call<ResponseNews> // data 不返回数据
 
     /**
      * 添加评论

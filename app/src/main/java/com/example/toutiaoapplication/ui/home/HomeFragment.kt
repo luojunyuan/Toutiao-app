@@ -4,13 +4,12 @@ import android.content.Intent
 import android.os.Bundle
 import android.view.*
 import android.widget.ProgressBar
-import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.toutiaoapplication.R
 import com.example.toutiaoapplication.repo.entities.News
-import com.example.toutiaoapplication.ui.detail.DetailActivity
+import com.example.toutiaoapplication.utils.isAlreadyLogged
 import com.example.toutiaoapplication.utils.toast
 
 class HomeFragment : Fragment(), HomeContract.View {
@@ -34,9 +33,9 @@ class HomeFragment : Fragment(), HomeContract.View {
     private var viewAdapter: HomeAdapter? = null
 
     override fun onCreateView(
-            inflater: LayoutInflater,
-            container: ViewGroup?,
-            savedInstanceState: Bundle?
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
     ): View? {
         val rootView = inflater.inflate(R.layout.fragment_home, container, false)
 
@@ -57,7 +56,7 @@ class HomeFragment : Fragment(), HomeContract.View {
             setHasFixedSize(true)
             layoutManager = viewManager
         }
-        // definite no sense
+        // definitely make no sense
 //        recyclerView.addOnItemTouchListener(RecyclerItemClickListener(
 //            rootView.context, recyclerView, object : RecyclerItemClickListener.OnItemClickListener {
 //
@@ -76,5 +75,12 @@ class HomeFragment : Fragment(), HomeContract.View {
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
         inflater.inflate(R.menu.menu_home, menu)
         super.onCreateOptionsMenu(menu, inflater)
+        val new = menu.findItem(R.id.newThread)
+        new.setOnMenuItemClickListener {
+            if (isAlreadyLogged(this.requireContext())) {
+                startActivity(Intent(this.context, NewThreadActivity::class.java))
+            } else toast("请先登录")
+            true
+        }
     }
 }

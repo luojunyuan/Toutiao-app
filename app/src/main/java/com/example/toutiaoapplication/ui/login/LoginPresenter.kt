@@ -4,6 +4,7 @@ import android.util.Log
 import com.example.toutiaoapplication.repo.ApiServers
 import com.example.toutiaoapplication.repo.entities.LoginPayload
 import com.example.toutiaoapplication.repo.entities.ResponseUser
+import com.example.toutiaoapplication.utils.HeaderInterceptor
 import com.example.toutiaoapplication.utils.isValid
 import retrofit2.Call
 import retrofit2.Callback
@@ -33,7 +34,12 @@ class LoginPresenter(val view: LoginContract.View) : LoginContract.Presenter {
                         when (it.ret_code) {
                             "-1" -> uiThread { view.errorInfo() }
                             // "0" -> uiThread { view.onLoginSuccess(it.data) }
-                            "1" -> uiThread { view.onLoginSuccess(it.data) }
+                            "1" -> {
+                                HeaderInterceptor.cookie = response.headers()["set-cookie"]
+                                Log.e("NetWork=>headers", HeaderInterceptor.cookie!!)
+                                it.data.cookie = HeaderInterceptor.cookie!!
+                                uiThread { view.onLoginSuccess(it.data) }
+                            }
                             else -> Log.d(TAG, it.ret_code)
                         }
                     }
