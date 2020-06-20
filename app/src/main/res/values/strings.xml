@@ -152,5 +152,9 @@
     <string name="new_thread">发表新主题</string>
     <string name="avatar">Avatar</string>
     <string name="fit">点赞</string>
+    <string name="about">关于</string>
+    <string name="port_setting">端口设置</string>
+    <string name="summary_port_setting">设置服务器api访问的地址（以 / 结尾）</string>
+    <string name="add_Comment">添加评论</string>
 
 </resources>

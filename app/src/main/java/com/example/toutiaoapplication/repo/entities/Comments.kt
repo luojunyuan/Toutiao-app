@@ -6,10 +6,10 @@ data class ResponseComments(
 )
 
 data class Comments(
-    val ccont: String,
-    val cdel: Int,
-    val cid: Int,
-    val ctime: Long,
-    val tid: Int,
-    val uid: Int
+    val ccont: String, // 内容
+    val cdel: Int,     // 删除标志
+    val cid: Int,      // id
+    val ctime: Long,   // 日期
+    val tid: Int,      // 文章 id
+    val uid: Int       // 用户 id
 )

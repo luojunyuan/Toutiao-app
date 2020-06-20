@@ -41,7 +41,7 @@ class AccountsFragment : Fragment(), View.OnClickListener{
             val info = userInfo.username+"\n"+userInfo.descriptor
             tv.text = info
         }
-        Log.d(TAG, "登入状态，$loginState")
+        Log.d(TAG, "本机登入状态，$loginState")
 
         return rootView
     }

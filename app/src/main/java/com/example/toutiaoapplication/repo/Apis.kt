@@ -25,7 +25,7 @@ interface Apis {
      * 根据tid获取评论
      */
     @GET("/api/tcomm/{tid}")
-    fun getComments(@Path("tid") tid: Int)
+    fun getComments(@Path("tid") tid: String): Call<ResponseComments>
 
     /**
      * 获取thread评级

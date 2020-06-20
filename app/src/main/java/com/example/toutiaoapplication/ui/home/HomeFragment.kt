@@ -2,9 +2,7 @@ package com.example.toutiaoapplication.ui.home
 
 import android.content.Intent
 import android.os.Bundle
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
+import android.view.*
 import android.widget.ProgressBar
 import android.widget.TextView
 import androidx.fragment.app.Fragment
@@ -21,6 +19,11 @@ class HomeFragment : Fragment(), HomeContract.View {
         viewAdapter = HomeAdapter(data)
         viewAdapter?.notifyDataSetChanged()
         recyclerView.adapter = viewAdapter
+    }
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        setHasOptionsMenu(true)
     }
 
     override lateinit var presenter: HomeContract.Presenter
@@ -68,5 +71,10 @@ class HomeFragment : Fragment(), HomeContract.View {
 //                    toast("点击打开")
 //                }
 //            }))
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
+        inflater.inflate(R.menu.menu_home, menu)
+        super.onCreateOptionsMenu(menu, inflater)
     }
 }

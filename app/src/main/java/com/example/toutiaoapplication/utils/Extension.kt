@@ -2,15 +2,18 @@ package com.example.toutiaoapplication.utils
 
 import android.content.Context
 import android.content.Context.MODE_PRIVATE
+import android.icu.text.SimpleDateFormat
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import com.example.toutiaoapplication.repo.entities.User
+import java.text.ParseException
+import java.util.*
 
-fun Context.toast(text: String, duration: Int = Toast.LENGTH_SHORT){
+fun Context.toast(text: String, duration: Int = Toast.LENGTH_SHORT) {
     Toast.makeText(this, text, duration).show()
 }
 
-fun Context.toast(resId: Int, duration: Int = Toast.LENGTH_SHORT){
+fun Context.toast(resId: Int, duration: Int = Toast.LENGTH_SHORT) {
     Toast.makeText(this, resId, duration).show()
 }
 
@@ -59,7 +62,7 @@ fun loadSavedUserInfo(context: Context): User {
 
 fun clearUserInfo(context: Context) {
     val sp = context.getSharedPreferences("user_config", MODE_PRIVATE)
-    sp.edit().apply{
+    sp.edit().apply {
         remove("aid")
         remove("udesc")
         remove("uid")
@@ -70,4 +73,25 @@ fun clearUserInfo(context: Context) {
         putBoolean("save_flag", false)
         apply()
     }
+}
+
+fun getPortSP(context: Context): String? {
+    val sp = context.getSharedPreferences("config", MODE_PRIVATE)
+    return sp.getString("port_address", URL)
+}
+
+fun setPortSP(context: Context, addr: String) {
+    saveStringSP(context, "port_address", addr)
+}
+
+fun saveStringSP(context: Context, key: String, value: String) {
+    val sp = context.getSharedPreferences("config", MODE_PRIVATE)
+    sp.edit().apply {
+        putString(key, value)
+        apply()
+    }
+}
+
+fun transUnixTime(timestamp: Long): String {
+    return SimpleDateFormat.getDateTimeInstance().format(timestamp)
 }
