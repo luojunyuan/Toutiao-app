@@ -36,7 +36,8 @@
         <activity android:name=".ui.register.RegisterActivity"
             android:parentActivityName=".ui.login.LoginActivity"/>
         <activity android:name=".ui.setting.UserSettingActivity"
-            android:theme="@style/AppTheme.NoActionBar"/>
+            android:label=""
+            android:parentActivityName=".MainActivity"/>
         <activity android:name=".ui.collect.CollectActivity"
             android:parentActivityName=".MainActivity"/>
     </application>

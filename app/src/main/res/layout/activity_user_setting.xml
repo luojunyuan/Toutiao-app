@@ -105,7 +105,7 @@
                     <!--                    </LinearLayout>-->
 
                     <LinearLayout
-                        android:id="@+id/developersView"
+                        android:id="@+id/logoutView"
                         android:layout_width="match_parent"
                         android:layout_height="48dp"
                         android:background="?attr/selectableItemBackground"

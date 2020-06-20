@@ -23,6 +23,22 @@ import kotlinx.android.synthetic.main.fragment_accounts.view.*
 
 class AccountsFragment : Fragment(), View.OnClickListener{
     private var loginState = false
+    private lateinit var tv: TextView
+
+    override fun onResume() {
+        super.onResume()
+        // 判断是不是已经登陆了
+        loginState = isAlreadyLogged(this.requireContext())
+        if (loginState) {
+            val userInfo: User = loadSavedUserInfo(this.requireContext())
+            // 做一些修改界面的操作
+            val info = userInfo.username+"\n"+userInfo.descriptor
+            tv.text = info
+        } else {
+            tv.text = "未登录(点击登录)"
+        }
+        Log.d(TAG, "本机登入状态，$loginState")
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -31,21 +47,11 @@ class AccountsFragment : Fragment(), View.OnClickListener{
         // Inflate the layout for this fragment
         val rootView = inflater.inflate(R.layout.fragment_accounts, container, false)
 
-        val tv = rootView.findViewById<TextView>(R.id.ll_top)
+        tv = rootView.findViewById(R.id.ll_top)
         tv.setOnClickListener(this)
         rootView.userInfoSetting.setOnClickListener(this)
         val tv1 = rootView.findViewById<TextView>(R.id.tv_1)
         tv1.setOnClickListener(this)
-
-        // 判断是不是已经登陆过了
-        loginState = isAlreadyLogged(this.requireContext())
-        if (loginState) {
-            val userInfo: User = loadSavedUserInfo(this.requireContext())
-            // 做一些修改界面的操作
-            val info = userInfo.username+"\n"+userInfo.descriptor
-            tv.text = info
-        }
-        Log.d(TAG, "本机登入状态，$loginState")
 
         return rootView
     }

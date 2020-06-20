@@ -10,9 +10,7 @@ interface Apis {
 //    @GET("api/forum")
 //    fun allForum(): Call<News>
 
-    /**
-     * 返回所有thread
-     */
+    // 返回所有thread
     @GET("api/thread")
     fun allNews(): Call<ResponseNews> // Response<List<News>>
 
@@ -21,9 +19,7 @@ interface Apis {
      */
     // /api/thread/{tid}
 
-    /**
-     * 根据tid获取评论
-     */
+    // 根据tid获取评论
     @GET("/api/tcomm/{tid}")
     fun getComments(@Path("tid") tid: String): Call<ResponseComments>
 
@@ -32,9 +28,7 @@ interface Apis {
      */
     // @GET("/api/rate/{tid}")
 
-    /**
-     * 通过uid查询用户信息
-     */
+    // 通过uid查询用户信息
     @GET("api/users/{uid}")
     fun getUser(@Path("uid") uid: Int): Call<ResponseUser>
 
@@ -43,9 +37,7 @@ interface Apis {
      */
     // /api/check
 
-    /**
-     * 通过uid获取用户所有评论
-     */
+    // 通过uid获取用户所有评论
     @GET("/api/ucomm/{uid}")
     fun getUserComment(@Path("uid") uid: Int)
 
@@ -84,7 +76,8 @@ interface Apis {
     // /api/top
 
     // logout
-    // /api/logout
+    @GET("/api/logout")
+    fun logout(): Call<logoutResponse>
 
     // 注册用户api
     //  "/api/register"
