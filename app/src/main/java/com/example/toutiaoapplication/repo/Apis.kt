@@ -80,7 +80,8 @@ interface Apis {
     fun logout(): Call<logoutResponse>
 
     // 注册用户api
-    //  "/api/register"
+    @POST("/api/register")
+    fun regiser(@Body payload: RegisterPayload): Call<ResponseUser>
 
     // 获取用户信息 "/api/users/{value}"
     // 修改用户信息 "/api/users"
