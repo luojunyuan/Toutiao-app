@@ -22,7 +22,7 @@ class DetailActivity : AppCompatActivity(), DetailContract.View {
         // 小心comment返回时若页面被结束他不会传递下值
         val title = intent.getStringExtra("title")!!
         val content = intent.getStringExtra("content")!!
-        val time = intent.getStringExtra("time")!!
+        val time = intent.getLongExtra("time", -1)
         val tid: Int = intent.getIntExtra("tid", -1)
 
 

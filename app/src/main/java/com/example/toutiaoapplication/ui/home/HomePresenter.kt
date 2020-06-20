@@ -22,7 +22,7 @@ class HomePresenter(private var view: HomeFragment) : HomeContract.Presenter {
                 override fun onResponse(call: Call<ResponseNews>, response: Response<ResponseNews>) {
                     Log.d(TAG, response.body()?.data.toString())
                     response.body()?.let {
-                        uiThread { view.refreshNews(it.data) }
+                        uiThread { view.refreshNews(it.data.list) }
                     }
                 }
             })

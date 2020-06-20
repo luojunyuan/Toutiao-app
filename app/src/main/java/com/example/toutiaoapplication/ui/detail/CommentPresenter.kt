@@ -21,9 +21,9 @@ class CommentPresenter(private var view: CommentsActivity) : CommentContract.Pre
                     call: Call<ResponseComments>,
                     response: Response<ResponseComments>
                 ) {
-                    Log.d(TAG, response.body()?.data.toString())
+                    Log.d(TAG, response.body()?.data?.list.toString())
                     response.body()?.let {
-                        uiThread { view.setData(it.data) }
+                        uiThread { view.setData(it.data.list) }
                     }
                 }
 

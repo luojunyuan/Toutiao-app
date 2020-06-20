@@ -10,6 +10,7 @@ import com.example.toutiaoapplication.R
 import com.example.toutiaoapplication.repo.entities.News
 import com.example.toutiaoapplication.ui.detail.DetailActivity
 import com.example.toutiaoapplication.utils.EXTRA_MESSAGE
+import com.example.toutiaoapplication.utils.transUnixTime
 import kotlinx.android.synthetic.main.item_news_article_text.view.*
 
 class HomeAdapter(private var data: List<News>) :
@@ -42,7 +43,7 @@ class HomeAdapter(private var data: List<News>) :
     override fun getItemCount() = data.size
 
     override fun onBindViewHolder(holder: HomeViewHolder, position: Int) {
-        holder.itemView.tv_extra.text = data[position].time
+        holder.itemView.tv_extra.text = transUnixTime(data[position].time)
         holder.itemView.tv_title.text = data[position].title
         holder.itemView.tv_abstract.text = data[position].content
     }
