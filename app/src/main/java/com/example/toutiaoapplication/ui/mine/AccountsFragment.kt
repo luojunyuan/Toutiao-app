@@ -8,8 +8,10 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
+import androidx.fragment.app.ListFragment
 import com.example.toutiaoapplication.R
 import com.example.toutiaoapplication.repo.entities.User
+import com.example.toutiaoapplication.ui.collect.CollectActivity
 import com.example.toutiaoapplication.ui.login.LoginActivity
 import com.example.toutiaoapplication.ui.setting.UserSettingActivity
 import com.example.toutiaoapplication.utils.isAlreadyLogged
@@ -32,6 +34,8 @@ class AccountsFragment : Fragment(), View.OnClickListener{
         val tv = rootView.findViewById<TextView>(R.id.ll_top)
         tv.setOnClickListener(this)
         rootView.userInfoSetting.setOnClickListener(this)
+        val tv1 = rootView.findViewById<TextView>(R.id.tv_1)
+        tv1.setOnClickListener(this)
 
         // 判断是不是已经登陆过了
         loginState = isAlreadyLogged(this.requireContext())
@@ -54,6 +58,7 @@ class AccountsFragment : Fragment(), View.OnClickListener{
             R.id.userInfoSetting -> if (loginState) { startActivity(
                 Intent(this.context, UserSettingActivity::class.java)
             )} else toast("请先登录")
+            R.id.tv_1 -> startActivity(Intent(this.context, CollectActivity::class.java))
         }
     }
 

@@ -22,8 +22,8 @@ class CommentAdapter(var data: List<Comments>) :
         val v = LayoutInflater.from(parent.context)
             .inflate(R.layout.item_comment, parent, false)
 
-        val holder = CommentViewHolder(v)
-        parent.context
+        // val holder = CommentViewHolder(v)
+        // parent.context
 
         return CommentViewHolder(v)
     }
