@@ -68,8 +68,10 @@ interface Apis {
 
     /**
      * 添加评论
+     * code 返回 0 发送成功
      */
-    // @POST("/api/comm")
+    @POST("/api/comm")
+    fun postComment(@Body payload: CommentPayload): Call<ResponseComments>
 
     // 删除评论
     // @DELETE("/api/comm/{cid}")

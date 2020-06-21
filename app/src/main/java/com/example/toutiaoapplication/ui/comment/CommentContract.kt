@@ -7,6 +7,7 @@ import com.example.toutiaoapplication.repo.entities.Comments
 interface CommentContract {
     interface Presenter : BasePresenter {
         fun getComments(tid: String)
+        fun postComment(threadId: String, content: String)
     }
 
     interface View : BaseView<Presenter> {
