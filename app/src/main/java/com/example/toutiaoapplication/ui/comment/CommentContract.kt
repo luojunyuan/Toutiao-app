@@ -1,4 +1,4 @@
-package com.example.toutiaoapplication.ui.detail
+package com.example.toutiaoapplication.ui.comment
 
 import com.example.toutiaoapplication.base.BasePresenter
 import com.example.toutiaoapplication.base.BaseView

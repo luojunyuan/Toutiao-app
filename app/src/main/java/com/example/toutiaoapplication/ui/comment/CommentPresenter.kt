@@ -1,4 +1,4 @@
-package com.example.toutiaoapplication.ui.detail
+package com.example.toutiaoapplication.ui.comment
 
 import android.util.Log
 import com.example.toutiaoapplication.repo.ApiServers

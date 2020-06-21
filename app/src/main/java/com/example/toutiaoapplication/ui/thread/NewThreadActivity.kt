@@ -1,4 +1,4 @@
-package com.example.toutiaoapplication.ui.home
+package com.example.toutiaoapplication.ui.thread
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -11,7 +11,6 @@ import com.example.toutiaoapplication.R
 import com.example.toutiaoapplication.repo.ApiServers
 import com.example.toutiaoapplication.repo.entities.ResponseNews
 import com.example.toutiaoapplication.repo.entities.ThreadPayload
-import com.example.toutiaoapplication.ui.detail.CommentPresenter
 import com.example.toutiaoapplication.utils.loadSavedUserInfo
 import com.example.toutiaoapplication.utils.toast
 import kotlinx.android.synthetic.main.activity_new_thread.*

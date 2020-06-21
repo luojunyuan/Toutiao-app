@@ -13,7 +13,6 @@ import androidx.preference.PreferenceFragmentCompat
 import com.example.toutiaoapplication.R
 import com.example.toutiaoapplication.repo.ApiServers
 import com.example.toutiaoapplication.repo.entities.CheckResponse
-import com.example.toutiaoapplication.ui.home.NewThreadActivity
 import com.example.toutiaoapplication.utils.getPortSP
 import com.example.toutiaoapplication.utils.loadSavedUserInfo
 import com.example.toutiaoapplication.utils.setPortSP

@@ -9,6 +9,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.toutiaoapplication.R
 import com.example.toutiaoapplication.repo.entities.News
+import com.example.toutiaoapplication.ui.thread.NewThreadActivity
 import com.example.toutiaoapplication.utils.isAlreadyLogged
 import com.example.toutiaoapplication.utils.toast
 

@@ -1,14 +1,12 @@
-package com.example.toutiaoapplication.ui.detail
+package com.example.toutiaoapplication.ui.comment
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.toutiaoapplication.R
 import com.example.toutiaoapplication.repo.entities.Comments
 import kotlinx.android.synthetic.main.activity_comments.*
-import org.w3c.dom.Comment
 
 class CommentsActivity : AppCompatActivity(), CommentContract.View {
     private lateinit var commentManager: RecyclerView.LayoutManager

@@ -1,12 +1,8 @@
-package com.example.toutiaoapplication.ui.detail
+package com.example.toutiaoapplication.ui.comment
 
-import android.app.AlertDialog
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.TextView
-import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
 import com.example.toutiaoapplication.R
 import com.example.toutiaoapplication.repo.entities.Comments

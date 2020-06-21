@@ -1,4 +1,4 @@
-package com.example.toutiaoapplication.ui.home
+package com.example.toutiaoapplication.utils
 
 import android.content.Context
 import android.view.GestureDetector
