@@ -15,6 +15,7 @@ import androidx.navigation.findNavController
 import androidx.navigation.ui.*
 import com.example.toutiaoapplication.repo.ApiServers
 import com.example.toutiaoapplication.repo.entities.LoginPayload
+import com.example.toutiaoapplication.repo.entities.ResponseNews
 import com.example.toutiaoapplication.repo.entities.ResponseUser
 import com.example.toutiaoapplication.utils.URL
 import com.example.toutiaoapplication.utils.getPortSP
@@ -46,31 +47,6 @@ class MainActivity : AppCompatActivity() {
         // }
 
         initControl()
-    }
-
-    private fun activeLoginStatus() {
-        val userInfo = loadSavedUserInfo(this)
-        val handler = Handler(Looper.getMainLooper())
-        handler.post {
-            ApiServers().getApiService().loginUser(LoginPayload(userInfo.username, "123456"))
-                .enqueue(object : Callback<ResponseUser> {
-                    override fun onFailure(call: Call<ResponseUser>, t: Throwable) {
-                        Log.d(TAG, t.printStackTrace().toString())
-                    }
-
-                    override fun onResponse(
-                        call: Call<ResponseUser>,
-                        response: Response<ResponseUser>
-                    ) {
-                        if (response.isSuccessful) {
-                            Log.d(TAG, response.body().toString())
-                        } else {
-                            Log.d("NetWork", response.message())
-                        }
-                    }
-
-                })
-        }
     }
 
     /**

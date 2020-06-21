@@ -13,9 +13,13 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".ui.thread.NewThreadActivity"
+        <activity android:name=".ui.search.SearchActivity"
             android:parentActivityName=".MainActivity"
-            android:label="新建主题"/>
+            android:label="@string/action_search"/>
+        <activity
+            android:name=".ui.thread.NewThreadActivity"
+            android:label="新建主题"
+            android:parentActivityName=".MainActivity" />
         <activity
             android:name=".ui.comment.CommentsActivity"
             android:parentActivityName=".ui.detail.DetailActivity" />

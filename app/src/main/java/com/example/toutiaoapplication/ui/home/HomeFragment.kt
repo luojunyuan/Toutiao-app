@@ -9,6 +9,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.toutiaoapplication.R
 import com.example.toutiaoapplication.repo.entities.News
+import com.example.toutiaoapplication.ui.search.SearchActivity
 import com.example.toutiaoapplication.ui.thread.NewThreadActivity
 import com.example.toutiaoapplication.utils.isAlreadyLogged
 import com.example.toutiaoapplication.utils.toast
@@ -87,7 +88,7 @@ class HomeFragment : Fragment(), HomeContract.View {
 
         val search = menu.findItem((R.id.search))
         search.setOnMenuItemClickListener {
-            // startActivity(Intent(this.context, ))
+            startActivity(Intent(this.context, SearchActivity::class.java))
             true
         }
     }

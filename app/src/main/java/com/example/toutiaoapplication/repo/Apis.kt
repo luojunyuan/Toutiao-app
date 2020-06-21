@@ -15,8 +15,10 @@ interface Apis {
     @GET("api/thread")
     fun allNews(): Call<ResponseNews> // Response<List<News>>
 
-    @GET("/api/search/t/{title_string}}")
+    // 搜索
+    @GET("/api/search/t/{title_string}")
     fun searchWord(@Path("title_string") keyWord: String): Call<ResponseNews>
+
     /**
      * 获取主题
      */

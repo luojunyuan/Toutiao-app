@@ -20,6 +20,7 @@ class RegisterActivity : AppCompatActivity() {
         setContentView(R.layout.activity_register)
 
         register.setOnClickListener{
+            // TODO
             if (password_1.text.trim().toString() == password_2.text.trim().toString()) {
                 // 发送信息到api
                 val payload = RegisterPayload(uname = username.text.trim().toString(),

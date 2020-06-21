@@ -163,6 +163,7 @@
     <string name="dev_tool">开发者工具</string>
     <string name="check_login">检查登入状态</string>
     <string name="label_forum_num">分区：</string>
+    <string name="search_hint">模糊搜索</string>
     <string-array name="forum_array">
         <item>主页 - 1</item>
     </string-array>
