@@ -15,6 +15,8 @@ interface Apis {
     @GET("api/thread")
     fun allNews(): Call<ResponseNews> // Response<List<News>>
 
+    @GET("/api/search/t/{title_string}}")
+    fun searchWord(@Path("title_string") keyWord: String): Call<ResponseNews>
     /**
      * 获取主题
      */
@@ -87,7 +89,7 @@ interface Apis {
 
     // 注册用户api
     @POST("/api/register")
-    fun regiser(@Body payload: RegisterPayload): Call<ResponseUser>
+    fun register(@Body payload: RegisterPayload): Call<ResponseUser>
 
     // 获取用户信息 "/api/users/{value}"
     // 修改用户信息 "/api/users"
@@ -98,7 +100,7 @@ interface Apis {
     // @GET("/api/auth[/1or2or3or4]")
     // 通过 aid 修改权限信息？
     // @PUT("/api/auth/{aid}")
-    // 获取分区信息?
+    // 获取分区信息? (什么玩意儿)
     // @GET("/api/forum[/1]")
     // 添加分区
     // @POST("/api/forum")

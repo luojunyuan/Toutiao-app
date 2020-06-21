@@ -8,4 +8,9 @@
         android:title="@string/new_thread"
         app:showAsAction="ifRoom"/>
 
+    <item
+        android:id="@+id/search"
+        android:icon="@drawable/ic_search_white_24dp"
+        android:title="@string/action_search"
+        app:showAsAction="ifRoom"/>
 </menu>

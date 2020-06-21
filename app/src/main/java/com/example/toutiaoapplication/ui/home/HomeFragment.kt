@@ -75,11 +75,18 @@ class HomeFragment : Fragment(), HomeContract.View {
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
         inflater.inflate(R.menu.menu_home, menu)
         super.onCreateOptionsMenu(menu, inflater)
+
         val new = menu.findItem(R.id.newThread)
         new.setOnMenuItemClickListener {
             if (isAlreadyLogged(this.requireContext())) {
                 startActivity(Intent(this.context, NewThreadActivity::class.java))
             } else toast("请先登录")
+            true
+        }
+
+        val search = menu.findItem((R.id.search))
+        search.setOnMenuItemClickListener {
+            // startActivity(Intent(this.context, ))
             true
         }
     }

@@ -6,7 +6,6 @@ import com.example.toutiaoapplication.R
 import com.example.toutiaoapplication.repo.ApiServers
 import com.example.toutiaoapplication.repo.entities.RegisterPayload
 import com.example.toutiaoapplication.repo.entities.ResponseUser
-import com.example.toutiaoapplication.ui.home.HomePresenter
 import com.example.toutiaoapplication.utils.toast
 import kotlinx.android.synthetic.main.activity_register.*
 import retrofit2.Call
@@ -26,7 +25,7 @@ class RegisterActivity : AppCompatActivity() {
                 val payload = RegisterPayload(uname = username.text.trim().toString(),
                                             upass = password_1.text.trim().toString(),
                                             umail = email.text.trim().toString())
-                ApiServers().getApiService().regiser(payload)
+                ApiServers().getApiService().register(payload)
                     .enqueue(object : Callback<ResponseUser>{
                         override fun onFailure(call: Call<ResponseUser>, t: Throwable) {
                             Log.d(TAG, t.toString())
