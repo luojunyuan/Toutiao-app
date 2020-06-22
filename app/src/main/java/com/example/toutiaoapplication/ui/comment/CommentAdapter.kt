@@ -33,24 +33,8 @@ class CommentAdapter(var data: List<Comments>) :
 
     override fun onBindViewHolder(holder: CommentViewHolder, position: Int) {
         // 还要通过data[position].uid拿 username
-        // var username = "default"
-        // ApiServers().getApiService().getUser(data[position].uid).enqueue(object : Callback<ResponseUser> {
-        //     override fun onFailure(call: retrofit2.Call<ResponseUser>, t: Throwable) {
-        //         Log.d(CommentPresenter.TAG, t.toString())
-        //     }
-        //
-        //     override fun onResponse(
-        //         call: retrofit2.Call<ResponseUser>,
-        //         response: Response<ResponseUser>
-        //     ) {
-        //         if (response.isSuccessful) {
-        //             username = response.body()?.data?.username.toString()
-        //             Log.d(TAG, username)
-        //         }
-        //     }
-        //
-        // })
-        // holder.itemView.tv_name.text = username
+
+        // holder.itemView.tv_name.text = usernameList[position]
         holder.itemView.tv_content.text = data[position].ccont
         holder.itemView.tv_time.text = transUnixTime(data[position].ctime)
     }

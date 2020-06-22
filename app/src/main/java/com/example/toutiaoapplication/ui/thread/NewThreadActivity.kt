@@ -72,7 +72,10 @@ class NewThreadActivity : AppCompatActivity(), AdapterView.OnItemSelectedListene
                         if (response.body()?.code == 0) {
                             toast("发表成功！")
                             finish()
-                        } else toast("未知错误")
+                        } else if (response.body()?.code == 1){
+                            toast("这是什么")
+                        }
+                        else toast("未知错误")
                     }
                 })
         }

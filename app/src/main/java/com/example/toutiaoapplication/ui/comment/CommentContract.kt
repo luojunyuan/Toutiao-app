@@ -6,11 +6,12 @@ import com.example.toutiaoapplication.repo.entities.Comments
 
 interface CommentContract {
     interface Presenter : BasePresenter {
-        fun getComments(tid: String)
+        fun getComments(tid: String) // v层调用
         fun postComment(threadId: String, content: String)
+        // fun getUserByComments(data: List<Comments>)
     }
 
     interface View : BaseView<Presenter> {
-        fun setData(data: List<Comments>)
+        fun setData(data: List<Comments>) // p层调用 设置到adapter
     }
 }

@@ -9,7 +9,7 @@ import com.example.toutiaoapplication.R
 import com.example.toutiaoapplication.repo.ApiServers
 import com.example.toutiaoapplication.repo.entities.News
 import com.example.toutiaoapplication.repo.entities.ResponseNews
-import com.example.toutiaoapplication.ui.home.HomeAdapter
+import com.example.toutiaoapplication.ui.home.ThreadAdapter
 import com.example.toutiaoapplication.utils.toast
 import kotlinx.android.synthetic.main.activity_search.*
 import retrofit2.Call
@@ -60,7 +60,7 @@ class SearchActivity : AppCompatActivity() {
     }
 
     fun refresh(data: List<News>) {
-        val adapter = HomeAdapter(data)
+        val adapter = ThreadAdapter(data)
         adapter.notifyDataSetChanged()
         recyclerView.adapter = adapter
     }

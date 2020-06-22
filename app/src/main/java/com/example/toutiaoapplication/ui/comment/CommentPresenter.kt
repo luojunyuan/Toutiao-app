@@ -74,3 +74,29 @@ class CommentPresenter(private var view: CommentsActivity) : CommentContract.Pre
         const val TAG = "CommentPresenter"
     }
 }
+
+/*
+    override fun getUsernameByComments(data: List<Comments>) {
+        lateinit var usernameList: MutableList<String>
+
+        for (comment in data) {
+            Log.d(CommentAdapter.TAG, "看看执行了几次")
+            ApiServers().getApiService().getUser(comment.uid)
+                .enqueue(object : Callback<ResponseUser> {
+                    override fun onFailure(call: Call<ResponseUser>, t: Throwable) {
+                        Log.d(TAG, t.toString())
+                    }
+
+                    override fun onResponse(
+                        call: Call<ResponseUser>,
+                        response: Response<ResponseUser>
+                    ) {
+                        if (response.isSuccessful) {
+                            usernameList.add(response.body()?.data?.username.toString())
+                        }
+                    }
+                })
+        }
+
+    }
+ */

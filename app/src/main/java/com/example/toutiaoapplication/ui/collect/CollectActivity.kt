@@ -21,6 +21,7 @@ class CollectActivity : AppCompatActivity() {
         setContentView(R.layout.activity_collect)
         /*找到控件*/
         list = findViewById(R.id.collect_recycle_view)
+        title = "按时间排序"
         /**准备数据 */
         /***
          * 模拟数据

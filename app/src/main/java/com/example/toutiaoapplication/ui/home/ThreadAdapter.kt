@@ -9,12 +9,11 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.toutiaoapplication.R
 import com.example.toutiaoapplication.repo.entities.News
 import com.example.toutiaoapplication.ui.detail.DetailActivity
-import com.example.toutiaoapplication.utils.EXTRA_MESSAGE
 import com.example.toutiaoapplication.utils.transUnixTime
 import kotlinx.android.synthetic.main.item_news_article_text.view.*
 
-class HomeAdapter(private var data: List<News>) :
-    RecyclerView.Adapter<HomeAdapter.HomeViewHolder>() {
+class ThreadAdapter(private var data: List<News>) :
+    RecyclerView.Adapter<ThreadAdapter.HomeViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): HomeViewHolder {
         val itemView =

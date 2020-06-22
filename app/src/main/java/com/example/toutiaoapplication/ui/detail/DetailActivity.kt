@@ -8,6 +8,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
 import com.example.toutiaoapplication.R
 import com.example.toutiaoapplication.ui.comment.CommentsActivity
+import com.example.toutiaoapplication.utils.toast
 import kotlinx.android.synthetic.main.activity_detail.*
 import kotlinx.android.synthetic.main.content_scrolling.*
 
@@ -45,6 +46,9 @@ class DetailActivity : AppCompatActivity(), DetailContract.View {
                     }
                     startActivity(intent)
                 }
+                R.id.good -> toast("给主题点赞👍！")
+                R.id.bad -> toast("给主题点踩👎！")
+                R.id.star -> toast("收藏主题")
             }
             true
         }
