@@ -11,7 +11,7 @@
 
     <item
         android:id="@+id/accountsFragment"
-        android:icon="@drawable/ic_library_books_white_24dp"
+        android:icon="@drawable/person_logo_grey"
         android:title="@string/menu_accounts" />
 
 </menu>
