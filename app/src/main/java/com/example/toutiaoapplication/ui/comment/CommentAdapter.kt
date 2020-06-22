@@ -34,7 +34,8 @@ class CommentAdapter(var data: List<Comments>) :
     override fun onBindViewHolder(holder: CommentViewHolder, position: Int) {
         // 还要通过data[position].uid拿 username
 
-        // holder.itemView.tv_name.text = usernameList[position]
+        holder.itemView.tv_name.text = data[position].uname
+        holder.itemView.tv_introduce.text = data[position].udesc
         holder.itemView.tv_content.text = data[position].ccont
         holder.itemView.tv_time.text = transUnixTime(data[position].ctime)
     }

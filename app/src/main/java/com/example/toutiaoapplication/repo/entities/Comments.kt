@@ -8,7 +8,9 @@ data class Comments(
     val cid: Int,      // id
     val ctime: Long,   // 日期
     val tid: Int,      // 文章 id
-    val uid: Int       // 用户 id
+    val uid: Int,       // 用户 id
+    val uname: String,
+    val udesc: String
 )
 
 data class ResponseComments(

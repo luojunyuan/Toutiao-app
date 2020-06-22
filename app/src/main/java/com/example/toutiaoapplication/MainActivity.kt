@@ -42,30 +42,6 @@ class MainActivity : AppCompatActivity() {
         // }
 
         initControl()
-        test()
-    }
-
-    private fun test() {
-        ApiServers().getApiService().getTop()
-            .enqueue(object : Callback<ResponseSingleNew> {
-                override fun onFailure(call: Call<ResponseSingleNew>, t: Throwable) {
-                    Log.d(TAG, t.message.toString())
-                }
-
-                override fun onResponse(
-                    call: Call<ResponseSingleNew>,
-                    response: Response<ResponseSingleNew>
-                ) {
-                    if (response.isSuccessful){
-                        Log.d(TAG, response.code().toString())
-                        response.body()?.let {
-                            Log.d(TAG, it.toString())
-                        }
-                    }
-
-                }
-
-            })
     }
 
     /**
