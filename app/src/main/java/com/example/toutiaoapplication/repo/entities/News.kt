@@ -14,11 +14,36 @@ data class News (
     @SerializedName("uid")   var uid: Int        // 用户ID
 )
 
+data class Top(
+    @SerializedName("fid")
+    val fid: Int,
+    @SerializedName("fname") //
+    val fname: String,
+    @SerializedName("tcont")
+    val tcont: String,
+    @SerializedName("tdel")
+    val tdel: Int,
+    @SerializedName("tid")
+    val tid: Int,
+    @SerializedName("tname")
+    val tname: String,
+    @SerializedName("ttime")
+    val ttime: Long,
+    @SerializedName("ttop")
+    val ttop: Int,
+    @SerializedName("udesc") //
+    val udesc: String,
+    @SerializedName("uid")
+    val uid: Int,
+    @SerializedName("uname") //
+    val uname: String
+)
+
 data class ResponseSingleNew(
     @SerializedName("code")
     val code: Int,
     @SerializedName("data")
-    val `data`: List<News>
+    val `data`: List<Top>
 )
 
 data class ResponseNews(
