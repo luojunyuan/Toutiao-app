@@ -38,7 +38,7 @@ class RegisterActivity : AppCompatActivity() {
                             response: Response<ResponseUser>
                         ) {
                             Log.d(TAG, response.body()?.data.toString())
-                            toast("注册陈公")
+                            toast("注册成功")
                             finish()
                         }
                     })
