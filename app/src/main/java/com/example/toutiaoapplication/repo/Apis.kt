@@ -12,8 +12,8 @@ interface Apis {
 //    fun allForum(): Call<News>
 
     // 指定分区获取帖子
-    @GET("api/fthread/{fid}}")
-    fun getExactForum(@Path("fid") key: String): Call<ResponseNews>
+    @GET("api/fthread/{fid}")
+    fun getExactForum(@Path("fid") key: Int): Call<ResponseNews>
 
     // 返回所有thread
     @GET("api/thread")

@@ -2,6 +2,7 @@ package com.example.toutiaoapplication.ui.announce
 
 import android.util.Log
 import com.example.toutiaoapplication.repo.ApiServers
+import com.example.toutiaoapplication.repo.entities.ResponseNews
 import com.example.toutiaoapplication.repo.entities.ResponseSingleNew
 import com.example.toutiaoapplication.utils.toast
 import retrofit2.Call
@@ -10,7 +11,24 @@ import retrofit2.Response
 
 class AnnouncePresenter(var view: AnnounceFragment) : AnnounceContract.Presenter {
     override fun requestData() {
+        ApiServers().getApiService().getExactForum(1)
+            .enqueue(object : Callback<ResponseNews> {
+                override fun onFailure(call: Call<ResponseNews>, t: Throwable) {
+                    Log.d(TAG, t.message.toString())
+                    uiThread { view.toast("Retrofit onFailure") }
+                }
 
+                override fun onResponse(
+                    call: Call<ResponseNews>,
+                    response: Response<ResponseNews>
+                ) {
+                    if (response.isSuccessful){
+                        response.body()?.let {
+                            uiThread { view.refreshNews(it.data.list) }
+                        }
+                    } else uiThread { view.toast("Response Error") }
+                }
+            })
     }
 
     override fun requestTop() {
@@ -30,14 +48,13 @@ class AnnouncePresenter(var view: AnnounceFragment) : AnnounceContract.Presenter
                             uiThread { view.setTop(it.data[0]) }
                         }
                     } else uiThread { view.toast("Response Error") }
-
                 }
-
             })
     }
 
     override fun start() {
         requestTop()
+        requestData()
     }
 
     companion object {

@@ -19,6 +19,7 @@ class AnnounceAdapter(private var data: List<News>) :
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ThreadViewHolder {
         val itemView =
             LayoutInflater.from(parent.context).inflate(R.layout.item_news_article_text, parent, false) as CardView
+        Log.d(TAG, "1")
 
         val holder = ThreadViewHolder(itemView)
         holder.itemView.setOnClickListener{

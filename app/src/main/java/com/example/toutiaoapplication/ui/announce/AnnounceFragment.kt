@@ -2,6 +2,7 @@ package com.example.toutiaoapplication.ui.announce
 
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -25,7 +26,10 @@ class AnnounceFragment : Fragment(), AnnounceContract.View {
     override lateinit var presenter: AnnounceContract.Presenter
 
     override fun refreshNews(data: List<News>) {
-
+        viewAdapter = AnnounceAdapter(data)
+        viewAdapter?.notifyDataSetChanged()
+        recyclerView.adapter = viewAdapter
+        refresh.isRefreshing = false
     }
 
     override fun setTop(data: Top) {
@@ -37,10 +41,11 @@ class AnnounceFragment : Fragment(), AnnounceContract.View {
 
     private lateinit var viewManager: RecyclerView.LayoutManager
     private lateinit var recyclerView: RecyclerView
-    private var viewAdapter: HomeAdapter? = null
+    private var viewAdapter: AnnounceAdapter? = null
     private lateinit var topExtra: TextView
     private lateinit var topTitle: TextView
     private lateinit var topReceiveData: Top
+    private lateinit var refresh: SwipeRefreshLayout
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -57,7 +62,7 @@ class AnnounceFragment : Fragment(), AnnounceContract.View {
 
     private fun initView(view: View) {
         // 设置下拉刷新
-        val refresh = view.findViewById<SwipeRefreshLayout>(R.id.refresh_layout)
+        refresh = view.findViewById(R.id.refresh_layout)
         handlerDownPullUpdate(refresh)
 
         // 初始化topView
@@ -86,9 +91,6 @@ class AnnounceFragment : Fragment(), AnnounceContract.View {
         refresh.setOnRefreshListener {
             // 执行刷新数据的操作
             presenter.requestData()
-            Timer("SettingUp", false).schedule(1000) {
-                refresh.isRefreshing = false
-            }
         }
     }
 
