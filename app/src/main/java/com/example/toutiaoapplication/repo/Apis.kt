@@ -11,6 +11,10 @@ interface Apis {
 //    @GET("api/forum")
 //    fun allForum(): Call<News>
 
+    // 指定分区获取帖子
+    @GET("api/fthread/{fid}}")
+    fun getExactForum(@Path("fid") key: String): Call<ResponseNews>
+
     // 返回所有thread
     @GET("api/thread")
     fun allNews(): Call<ResponseNews> // Response<List<News>>
@@ -84,8 +88,9 @@ interface Apis {
     // 获取分区所有主题
     // "/api/fthread/{fid}"
 
-    // 置顶主题
-    // /api/top
+    // 获取置顶主题
+    @GET("/api/top")
+    fun getTop(): Call<ResponseSingleNew>
 
     // logout
     @GET("/api/logout")

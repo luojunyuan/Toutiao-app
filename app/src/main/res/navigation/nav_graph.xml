@@ -28,12 +28,12 @@
     <fragment
         android:id="@+id/settingFragment"
         android:name="com.example.toutiaoapplication.ui.setting.SettingFragment"
-        android:label="公告"
+        android:label="设置"
         tools:layout="@layout/fragment_setting" />
 
     <fragment
         android:id="@+id/announceFragment"
         android:name="com.example.toutiaoapplication.ui.announce.AnnounceFragment"
-        android:label="设置"
-        tools:layout="@layout/fragment_setting" />
+        android:label="公告"
+        tools:layout="@layout/fragment_announce" />
 </navigation>

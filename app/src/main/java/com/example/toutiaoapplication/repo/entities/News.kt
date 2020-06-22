@@ -13,6 +13,14 @@ data class News (
     @SerializedName("fid")   var fid: Int,       // 分区ID
     @SerializedName("uid")   var uid: Int        // 用户ID
 )
+
+data class ResponseSingleNew(
+    @SerializedName("code")
+    val code: Int,
+    @SerializedName("data")
+    val `data`: List<News>
+)
+
 data class ResponseNews(
     @SerializedName("code")
     val code: Int,

@@ -15,14 +15,13 @@ import com.example.toutiaoapplication.ui.thread.NewThreadActivity
 import com.example.toutiaoapplication.utils.isAlreadyLogged
 import com.example.toutiaoapplication.utils.loadSavedUserInfo
 import com.example.toutiaoapplication.utils.toast
-import kotlinx.android.synthetic.main.fragment_home.*
 import java.util.*
 import kotlin.concurrent.schedule
 
 class HomeFragment : Fragment(), HomeContract.View {
 
     override fun refreshNews(data: List<News>) {
-        viewAdapter = ThreadAdapter(data)
+        viewAdapter = HomeAdapter(data)
         viewAdapter?.notifyDataSetChanged()
         recyclerView.adapter = viewAdapter
     }
@@ -37,7 +36,7 @@ class HomeFragment : Fragment(), HomeContract.View {
     private lateinit var progressBar: ProgressBar
     private lateinit var viewManager: RecyclerView.LayoutManager
     private lateinit var recyclerView: RecyclerView
-    private var viewAdapter: ThreadAdapter? = null
+    private var viewAdapter: HomeAdapter? = null
 
     override fun onCreateView(
         inflater: LayoutInflater,

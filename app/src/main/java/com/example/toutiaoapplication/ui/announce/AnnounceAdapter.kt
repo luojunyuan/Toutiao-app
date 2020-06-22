@@ -1,4 +1,4 @@
-package com.example.toutiaoapplication.ui.home
+package com.example.toutiaoapplication.ui.announce
 
 import android.content.Intent
 import android.util.Log
@@ -12,28 +12,27 @@ import com.example.toutiaoapplication.ui.detail.DetailActivity
 import com.example.toutiaoapplication.utils.transUnixTime
 import kotlinx.android.synthetic.main.item_news_article_text.view.*
 
-class ThreadAdapter(private var data: List<News>) :
-    RecyclerView.Adapter<ThreadAdapter.HomeViewHolder>() {
+class AnnounceAdapter(private var data: List<News>) :
+    RecyclerView.Adapter<AnnounceAdapter.ThreadViewHolder>() {
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): HomeViewHolder {
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ThreadViewHolder {
         val itemView =
             LayoutInflater.from(parent.context).inflate(R.layout.item_news_article_text, parent, false) as CardView
 
-        val holder = HomeViewHolder(itemView)
+        val holder = ThreadViewHolder(itemView)
         holder.itemView.setOnClickListener{
             val position = holder.adapterPosition
             val title = data[position].title
             val content = data[position].content
             val time = data[position].time
             val tid = data[position].tid
-            Log.d(TAG, "see $tid")
-            val intent = Intent(parent.context, DetailActivity::class.java).apply {
-                putExtra("title", title)
-                putExtra("content", content)
-                putExtra("time", time)
-                putExtra("tid", tid)
-            }
-            parent.context.startActivity(intent)
+            // val intent = Intent(parent.context, DetailActivity::class.java).apply {
+            //     putExtra("title", title)
+            //     putExtra("content", content)
+            //     putExtra("time", time)
+            //     putExtra("tid", tid)
+            // }
+            // parent.context.startActivity(intent)
         }
 
         return holder
@@ -41,15 +40,15 @@ class ThreadAdapter(private var data: List<News>) :
 
     override fun getItemCount() = data.size
 
-    override fun onBindViewHolder(holder: HomeViewHolder, position: Int) {
+    override fun onBindViewHolder(holder: ThreadViewHolder, position: Int) {
         holder.itemView.tv_extra.text = transUnixTime(data[position].time)
         holder.itemView.tv_title.text = data[position].title
         holder.itemView.tv_abstract.text = data[position].content
     }
 
-    class HomeViewHolder(itemView: CardView) : RecyclerView.ViewHolder(itemView)
+    class ThreadViewHolder(itemView: CardView) : RecyclerView.ViewHolder(itemView)
 
     companion object {
-        const val TAG = "HomeAdapter"
+        const val TAG = "AnnounceAdapter"
     }
 }

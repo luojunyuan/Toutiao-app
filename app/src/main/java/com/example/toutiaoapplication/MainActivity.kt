@@ -1,6 +1,7 @@
 package com.example.toutiaoapplication
 
 import android.os.Bundle
+import android.util.Log
 import android.view.MenuItem
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
@@ -9,9 +10,16 @@ import androidx.drawerlayout.widget.DrawerLayout
 import androidx.navigation.NavController
 import androidx.navigation.findNavController
 import androidx.navigation.ui.*
+import com.example.toutiaoapplication.repo.ApiServers
+import com.example.toutiaoapplication.repo.entities.ResponseSingleNew
+import com.example.toutiaoapplication.ui.announce.AnnouncePresenter
 import com.example.toutiaoapplication.utils.URL
 import com.example.toutiaoapplication.utils.getPortSP
+import com.example.toutiaoapplication.utils.toast
 import kotlinx.android.synthetic.main.activity_main.*
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
 import kotlin.properties.Delegates
 
 class MainActivity : AppCompatActivity() {
@@ -34,6 +42,30 @@ class MainActivity : AppCompatActivity() {
         // }
 
         initControl()
+        test()
+    }
+
+    private fun test() {
+        ApiServers().getApiService().getTop()
+            .enqueue(object : Callback<ResponseSingleNew> {
+                override fun onFailure(call: Call<ResponseSingleNew>, t: Throwable) {
+                    Log.d(TAG, t.message.toString())
+                }
+
+                override fun onResponse(
+                    call: Call<ResponseSingleNew>,
+                    response: Response<ResponseSingleNew>
+                ) {
+                    if (response.isSuccessful){
+                        Log.d(TAG, response.code().toString())
+                        response.body()?.let {
+                            Log.d(TAG, it.toString())
+                        }
+                    }
+
+                }
+
+            })
     }
 
     /**
@@ -43,7 +75,7 @@ class MainActivity : AppCompatActivity() {
         navController = findNavController(R.id.main_nav_host) //Initialising navController
 
         appBarConfiguration = AppBarConfiguration.Builder(R.id.homeFragment, R.id.accountsFragment,
-            R.id.sideFragment, R.id.settingFragment, R.id.accountsFragment) //Pass the ids of fragments from nav_graph which you d'ont want to show back button in toolbar
+            R.id.sideFragment, R.id.settingFragment, R.id.announceFragment) //Pass the ids of fragments from nav_graph which you d'ont want to show back button in toolbar
             .setDrawerLayout(main_drawer_layout) //Pass the drawer layout id from activity xml
             .build()
 
