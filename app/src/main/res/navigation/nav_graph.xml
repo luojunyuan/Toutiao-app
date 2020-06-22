@@ -10,13 +10,13 @@
     <fragment
         android:id="@+id/homeFragment"
         android:name="com.example.toutiaoapplication.ui.home.HomeFragment"
-        android:label="Home"
+        android:label="主页"
         tools:layout="@layout/fragment_home" />
 
     <fragment
         android:id="@+id/accountsFragment"
         android:name="com.example.toutiaoapplication.ui.mine.AccountsFragment"
-        android:label="Accounts"
+        android:label="账户"
         tools:layout="@layout/fragment_accounts" />
 
     <fragment
@@ -28,7 +28,12 @@
     <fragment
         android:id="@+id/settingFragment"
         android:name="com.example.toutiaoapplication.ui.setting.SettingFragment"
-        android:label="Settings"
+        android:label="公告"
         tools:layout="@layout/fragment_setting" />
 
+    <fragment
+        android:id="@+id/announceFragment"
+        android:name="com.example.toutiaoapplication.ui.announce.AnnounceFragment"
+        android:label="设置"
+        tools:layout="@layout/fragment_setting" />
 </navigation>

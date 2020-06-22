@@ -176,4 +176,5 @@
     <string name="hello_world">Hello Square World!</string>
     <string name="menu_bad">点踩</string>
     <string name="menu_star">收藏</string>
+    <string name="announce">公告</string>
 </resources>

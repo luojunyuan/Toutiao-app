@@ -15,8 +15,12 @@
         android:title="@string/menu_side" />
 
     <item
+        android:id="@+id/announceFragment"
+        android:icon="@drawable/ic_menu_camera"
+        android:title="@string/announce"/>
+
+    <item
         android:id="@+id/settingFragment"
         android:icon="@drawable/setting_logo_24dp"
         android:title="@string/settings" />
-
 </menu>
