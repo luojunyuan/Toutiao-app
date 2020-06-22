@@ -101,6 +101,9 @@ class HomeFragment : Fragment(), HomeContract.View {
         super.onCreateOptionsMenu(menu, inflater)
 
         val new = menu.findItem(R.id.newThread)
+        if (this.context?.let { loadSavedUserInfo(it).aid } == 1){
+            new.isVisible = false
+        }
         new.setOnMenuItemClickListener {
             if (isAlreadyLogged(this.requireContext())) {
                 startActivity(Intent(this.context, NewThreadActivity::class.java))
@@ -110,9 +113,6 @@ class HomeFragment : Fragment(), HomeContract.View {
 
         val search = menu.findItem((R.id.search))
         search.setOnMenuItemClickListener {
-            if (this.context?.let { loadSavedUserInfo(it).aid } == 1){
-                toast("无权发帖！")
-            }
             startActivity(Intent(this.context, SearchActivity::class.java))
             true
         }
