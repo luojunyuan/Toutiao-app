@@ -10,7 +10,7 @@ import android.widget.Spinner
 import com.example.toutiaoapplication.R
 import com.example.toutiaoapplication.repo.ApiServers
 import com.example.toutiaoapplication.repo.entities.ResponseNews
-import com.example.toutiaoapplication.repo.entities.ThreadPayload
+import com.example.toutiaoapplication.repo.entities.payload.ThreadPayload
 import com.example.toutiaoapplication.utils.loadSavedUserInfo
 import com.example.toutiaoapplication.utils.toast
 import kotlinx.android.synthetic.main.activity_new_thread.*
@@ -51,8 +51,11 @@ class NewThreadActivity : AppCompatActivity(), AdapterView.OnItemSelectedListene
             if (title == "" || content == ""){
                 toast("不能发表空内容和标题！")
             }
-            val payload = ThreadPayload(fid = selectForum, tcont = content,
-                                        tname = title, uid = userId)
+            val payload =
+                ThreadPayload(
+                    fid = selectForum, tcont = content,
+                    tname = title, uid = userId
+                )
             ApiServers().getApiService().createThread(payload)
                 .enqueue(object : Callback<ResponseNews> {
                     override fun onFailure(call: Call<ResponseNews>, t: Throwable) {

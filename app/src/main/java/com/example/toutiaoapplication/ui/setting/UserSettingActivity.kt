@@ -1,5 +1,6 @@
 package com.example.toutiaoapplication.ui.setting
 
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.view.View
@@ -40,6 +41,10 @@ class UserSettingActivity : AppCompatActivity() {
                     }
 
                 })
+        }
+
+        updateView.setOnClickListener {
+            startActivity(Intent(this, InfoActivity::class.java))
         }
     }
 

@@ -47,6 +47,7 @@
                     </LinearLayout>
 
                     <LinearLayout
+                        android:id="@+id/updateView"
                         android:layout_width="match_parent"
                         android:layout_height="48dp"
                         android:background="?attr/selectableItemBackground"

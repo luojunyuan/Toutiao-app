@@ -11,4 +11,9 @@
         android:id="@+id/good"
         android:icon="@drawable/ic_menu_camera"
         android:title="@string/menu_iine" />
+
+    <item
+        android:id="@+id/bad"
+        android:icon="@drawable/ic_menu_camera"
+        android:title="@string/menu_bad" />
 </menu>

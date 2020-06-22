@@ -1,8 +1,8 @@
 package com.example.toutiaoapplication.repo
 
 import com.example.toutiaoapplication.repo.entities.*
+import com.example.toutiaoapplication.repo.entities.payload.*
 import retrofit2.Call
-import retrofit2.Response
 import retrofit2.http.*
 
 
@@ -95,8 +95,12 @@ interface Apis {
     @POST("/api/register")
     fun register(@Body payload: RegisterPayload): Call<ResponseUser>
 
-    // 获取用户信息 "/api/users/{value}"
+    // 获取用户信息 "/api/users/{value}"// username or uid
+    @GET("/api/users/{value}")
+    fun getInfo(@Path("value") key: String): Call<ResponseUser>
     // 修改用户信息 "/api/users"
+    @PUT("/api/users")
+    fun updateInfo(@Body payload: InfoPayload): Call<ResponseUser>
     // 修改自己的密码 "/api/upass"
 
     // -----------------------------------------------------------

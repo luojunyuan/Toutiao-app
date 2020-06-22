@@ -4,7 +4,7 @@ import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import com.example.toutiaoapplication.R
 import com.example.toutiaoapplication.repo.ApiServers
-import com.example.toutiaoapplication.repo.entities.RegisterPayload
+import com.example.toutiaoapplication.repo.entities.payload.RegisterPayload
 import com.example.toutiaoapplication.repo.entities.ResponseUser
 import com.example.toutiaoapplication.utils.toast
 import kotlinx.android.synthetic.main.activity_register.*
@@ -23,9 +23,12 @@ class RegisterActivity : AppCompatActivity() {
             // TODO
             if (password_1.text.trim().toString() == password_2.text.trim().toString()) {
                 // 发送信息到api
-                val payload = RegisterPayload(uname = username.text.trim().toString(),
-                                            upass = password_1.text.trim().toString(),
-                                            umail = email.text.trim().toString())
+                val payload =
+                    RegisterPayload(
+                        uname = username.text.trim().toString(),
+                        upass = password_1.text.trim().toString(),
+                        umail = email.text.trim().toString()
+                    )
                 ApiServers().getApiService().register(payload)
                     .enqueue(object : Callback<ResponseUser>{
                         override fun onFailure(call: Call<ResponseUser>, t: Throwable) {
