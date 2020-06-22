@@ -1,18 +1,23 @@
 package com.example.toutiaoapplication.ui.announce
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
+import androidx.cardview.widget.CardView
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
 import com.example.toutiaoapplication.R
 import com.example.toutiaoapplication.repo.entities.News
+import com.example.toutiaoapplication.repo.entities.Top
 import com.example.toutiaoapplication.ui.home.HomeAdapter
+import com.example.toutiaoapplication.ui.thread.AnotherThreadActivity
 import com.example.toutiaoapplication.utils.transUnixTime
+import kotlinx.android.synthetic.main.fragment_announce.*
 import java.util.*
 import kotlin.concurrent.schedule
 
@@ -23,10 +28,11 @@ class AnnounceFragment : Fragment(), AnnounceContract.View {
 
     }
 
-    override fun setTop(data: News) {
-        val complexFit = "置顶" + transUnixTime(data.time)
+    override fun setTop(data: Top) {
+        topReceiveData = data
+        val complexFit = "置顶" + transUnixTime(data.ttime)
         topExtra.text = complexFit
-        topTitle.text = data.title
+        topTitle.text = data.tname
     }
 
     private lateinit var viewManager: RecyclerView.LayoutManager
@@ -34,6 +40,7 @@ class AnnounceFragment : Fragment(), AnnounceContract.View {
     private var viewAdapter: HomeAdapter? = null
     private lateinit var topExtra: TextView
     private lateinit var topTitle: TextView
+    private lateinit var topReceiveData: Top
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -56,6 +63,15 @@ class AnnounceFragment : Fragment(), AnnounceContract.View {
         // 初始化topView
         topExtra = view.findViewById(R.id.tv_extra)
         topTitle = view.findViewById(R.id.tv_title)
+        view.findViewById<CardView>(R.id.topView).setOnClickListener {
+            val intent = Intent(context, AnotherThreadActivity::class.java).apply {
+                putExtra("title", topReceiveData.tname)
+                putExtra("content", topReceiveData.tcont)
+                putExtra("time", topReceiveData.ttime)
+                putExtra("tid", topReceiveData.tid)
+            }
+            startActivity(intent)
+        }
 
         // 设置recyclerview
         recyclerView = view.findViewById<RecyclerView>(R.id.announce_recycler_view).apply {

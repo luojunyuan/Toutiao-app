@@ -3,6 +3,7 @@ package com.example.toutiaoapplication.ui.announce
 import com.example.toutiaoapplication.base.BasePresenter
 import com.example.toutiaoapplication.base.BaseView
 import com.example.toutiaoapplication.repo.entities.News
+import com.example.toutiaoapplication.repo.entities.Top
 
 interface AnnounceContract {
     interface Presenter : BasePresenter {
@@ -17,6 +18,6 @@ interface AnnounceContract {
         // data 是返回该分区的文章
         fun refreshNews(data: List<News>)
         // setTop 重新设置置顶item数据
-        fun setTop(data: News)
+        fun setTop(data: Top)
     }
 }
