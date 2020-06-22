@@ -3,9 +3,8 @@ package com.example.toutiaoapplication.ui.comment
 import android.util.Log
 import com.example.toutiaoapplication.MainActivity
 import com.example.toutiaoapplication.repo.ApiServers
-import com.example.toutiaoapplication.repo.entities.CommentPayload
+import com.example.toutiaoapplication.repo.entities.payload.CommentPayload
 import com.example.toutiaoapplication.repo.entities.ResponseComments
-import com.example.toutiaoapplication.ui.home.HomePresenter
 import com.example.toutiaoapplication.utils.loadSavedUserInfo
 import com.example.toutiaoapplication.utils.toast
 import retrofit2.Call
@@ -35,7 +34,12 @@ class CommentPresenter(private var view: CommentsActivity) : CommentContract.Pre
 
     override fun postComment(threadId: String, content: String) {
         val userId = loadSavedUserInfo(MainActivity.instance.applicationContext).uid
-        val payload = CommentPayload(tid = threadId.toInt(), uid = userId, ccont = content)
+        val payload =
+            CommentPayload(
+                tid = threadId.toInt(),
+                uid = userId,
+                ccont = content
+            )
         ApiServers().getApiService().postComment(payload)
             .enqueue(object : Callback<ResponseComments>{
                 override fun onFailure(call: Call<ResponseComments>, t: Throwable) {

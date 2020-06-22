@@ -1,10 +1,6 @@
 package com.example.toutiaoapplication
 
 import android.os.Bundle
-import android.os.Handler
-import android.os.Looper
-import android.util.Log
-import android.view.Menu
 import android.view.MenuItem
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
@@ -13,18 +9,9 @@ import androidx.drawerlayout.widget.DrawerLayout
 import androidx.navigation.NavController
 import androidx.navigation.findNavController
 import androidx.navigation.ui.*
-import com.example.toutiaoapplication.repo.ApiServers
-import com.example.toutiaoapplication.repo.entities.LoginPayload
-import com.example.toutiaoapplication.repo.entities.ResponseNews
-import com.example.toutiaoapplication.repo.entities.ResponseUser
 import com.example.toutiaoapplication.utils.URL
 import com.example.toutiaoapplication.utils.getPortSP
-import com.example.toutiaoapplication.utils.isAlreadyLogged
-import com.example.toutiaoapplication.utils.loadSavedUserInfo
 import kotlinx.android.synthetic.main.activity_main.*
-import retrofit2.Call
-import retrofit2.Callback
-import retrofit2.Response
 import kotlin.properties.Delegates
 
 class MainActivity : AppCompatActivity() {

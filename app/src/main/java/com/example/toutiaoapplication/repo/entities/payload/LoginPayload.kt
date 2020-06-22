@@ -1,4 +1,4 @@
-package com.example.toutiaoapplication.repo.entities
+package com.example.toutiaoapplication.repo.entities.payload
 
 data class LoginPayload (
     val uname: String,

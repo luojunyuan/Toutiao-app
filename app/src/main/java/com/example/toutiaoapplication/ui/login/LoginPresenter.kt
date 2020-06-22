@@ -2,7 +2,7 @@ package com.example.toutiaoapplication.ui.login
 
 import android.util.Log
 import com.example.toutiaoapplication.repo.ApiServers
-import com.example.toutiaoapplication.repo.entities.LoginPayload
+import com.example.toutiaoapplication.repo.entities.payload.LoginPayload
 import com.example.toutiaoapplication.repo.entities.ResponseUser
 import com.example.toutiaoapplication.utils.HeaderInterceptor
 import com.example.toutiaoapplication.utils.isValid
@@ -14,7 +14,11 @@ class LoginPresenter(val view: LoginContract.View) : LoginContract.Presenter {
 
     override fun login(userName: String, password: String) {
         if (userName.isValid() and password.isValid()) {
-            val payload = LoginPayload(userName, password)
+            val payload =
+                LoginPayload(
+                    userName,
+                    password
+                )
             uiThread { testLogin(payload) }
         } else view.showInputError()
     }
