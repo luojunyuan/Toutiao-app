@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:padding="15dp"
     tools:context=".ui.search.SearchActivity">
 
     <EditText
@@ -12,6 +13,8 @@
         android:layout_height="wrap_content"
         android:ems="10"
         android:inputType="textPersonName"
+        android:textCursorDrawable="@drawable/style_login_edit_text"
+        android:theme="@style/logineET"
         app:layout_constraintBaseline_toBaselineOf="@+id/buttonSearch"
         app:layout_constraintEnd_toStartOf="@+id/buttonSearch"
         app:layout_constraintHorizontal_bias="0.5"
@@ -24,6 +27,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/action_search"
+        android:textColor="@color/white"
+        android:background="@drawable/button_shape"
         app:layout_constraintBottom_toTopOf="@+id/guideline"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
