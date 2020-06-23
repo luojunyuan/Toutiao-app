@@ -10,7 +10,7 @@ import com.example.toutiaoapplication.R
 import com.example.toutiaoapplication.ui.comment.CommentsActivity
 import com.example.toutiaoapplication.utils.toast
 import kotlinx.android.synthetic.main.activity_detail.*
-import kotlinx.android.synthetic.main.content_scrolling.*
+import kotlinx.android.synthetic.main.article_content_scrolling.*
 
 
 class DetailActivity : AppCompatActivity(), DetailContract.View {
@@ -30,7 +30,7 @@ class DetailActivity : AppCompatActivity(), DetailContract.View {
         val toolbar = findViewById<Toolbar>(R.id.toolbar)
         setSupportActionBar(toolbar)
         toolbar_layout.title = title
-        detail_content.text = content
+        // detail_content.text = content
 
         supportActionBar?.setDisplayHomeAsUpEnabled(true) // 左侧添加一个默认的返回图标
         supportActionBar?.setHomeButtonEnabled(true) // 设置返回键可用

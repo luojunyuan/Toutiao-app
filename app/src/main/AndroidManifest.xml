@@ -15,7 +15,8 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity android:name=".ui.notice.NoticeActivity" />
-        <activity android:name=".ui.thread.ArticleActivity" />
+        <activity android:name=".ui.thread.ArticleActivity"
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".ui.setting.InfoActivity"
             android:label="@string/title_activity_info" />
