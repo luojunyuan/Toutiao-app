@@ -70,10 +70,11 @@ class NewThreadActivity : AppCompatActivity(), AdapterView.OnItemSelectedListene
                         Log.d(TAG, response.code().toString())
                         Log.d(TAG, response.body().toString())
                         if (response.body()?.code == 0) {
-                            toast("发表成功！")
+                            toast("发表成功！ code 0")
                             finish()
                         } else if (response.body()?.code == 1){
-                            toast("这是什么")
+                            toast("发表成功！ code 1")
+                            finish()
                         }
                         else toast("未知错误")
                     }

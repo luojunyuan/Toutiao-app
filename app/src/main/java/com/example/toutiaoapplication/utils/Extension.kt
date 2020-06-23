@@ -119,7 +119,6 @@ fun saveStringSP(context: Context, key: String, value: String) {
 
 fun transUnixTime(timestamp: Long): String {
     val trans = timestamp / 1000 - 46800
-    Log.d("TAG", trans.toString())
     return DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm")
         .withLocale(Locale.SIMPLIFIED_CHINESE)
         .withZone(ZoneId.of("Asia/Shanghai"))

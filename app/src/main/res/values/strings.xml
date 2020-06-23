@@ -91,7 +91,8 @@
     <string name="search_hint">模糊搜索</string>
     <string name="input_content">在这儿输入内容</string>
     <string-array name="forum_array">
-        <item>主页 - 1</item>
+        <item>公告 - 1</item>
+        <item>设计 - 2</item>
     </string-array>
     <string name="title_activity_info">用户信息</string>
     <!--
