@@ -14,7 +14,7 @@ import com.example.toutiaoapplication.utils.loadSavedUserInfo
 import com.example.toutiaoapplication.utils.transUnixTime
 import kotlinx.android.synthetic.main.item_news_article_text.view.*
 
-class AnnounceAdapter(private var data: List<News>) :
+class AnnounceAdapter(private var data: List<News>, private var presenter: AnnounceContract.Presenter) :
     RecyclerView.Adapter<AnnounceAdapter.ThreadViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ThreadViewHolder {
@@ -48,7 +48,10 @@ class AnnounceAdapter(private var data: List<News>) :
                         }
                         R.id.threadTop -> {
                             // fake top
-                            notifyItemRemoved(holder.adapterPosition)
+                            val pos = holder.adapterPosition
+                            val topData = Top(tname = data[pos].title, ttime = data[pos].time,
+                                uname = "",udesc = "",uid = -1,fname = "",fid = -1,ttop = -1,tcont = "",tid = -1,tdel = -1)
+                            presenter.coverTop(topData)
                         }
                     }
                     true

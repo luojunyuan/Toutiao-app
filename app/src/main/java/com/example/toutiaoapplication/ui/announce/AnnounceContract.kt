@@ -11,6 +11,7 @@ interface AnnounceContract {
         fun requestData()
         // 请求置顶（置顶只有一个，和分区无关）
         fun requestTop()
+        fun coverTop(data: Top)
     }
 
     interface View : BaseView<Presenter> {
