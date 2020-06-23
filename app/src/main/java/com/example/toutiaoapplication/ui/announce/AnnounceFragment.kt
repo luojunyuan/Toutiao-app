@@ -21,7 +21,7 @@ class AnnounceFragment : Fragment(), AnnounceContract.View {
     override lateinit var presenter: AnnounceContract.Presenter
 
     override fun refreshNews(data: List<News>) {
-        viewAdapter = AnnounceAdapter(data)
+        viewAdapter = AnnounceAdapter(data, presenter)
         viewAdapter?.notifyDataSetChanged()
         recyclerView.adapter = viewAdapter
         refresh.isRefreshing = false

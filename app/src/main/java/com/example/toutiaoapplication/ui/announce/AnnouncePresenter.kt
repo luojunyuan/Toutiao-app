@@ -5,6 +5,7 @@ import com.example.toutiaoapplication.repo.ApiServers
 import com.example.toutiaoapplication.repo.entities.News
 import com.example.toutiaoapplication.repo.entities.ResponseNews
 import com.example.toutiaoapplication.repo.entities.ResponseSingleNew
+import com.example.toutiaoapplication.repo.entities.Top
 import com.example.toutiaoapplication.utils.toast
 import retrofit2.Call
 import retrofit2.Callback
@@ -57,6 +58,10 @@ class AnnouncePresenter(var view: AnnounceFragment) : AnnounceContract.Presenter
                     } else uiThread { view.toast("Response Error") }
                 }
             })
+    }
+
+    override fun coverTop(data: Top) {
+        view.setTop(data)
     }
 
     override fun start() {
