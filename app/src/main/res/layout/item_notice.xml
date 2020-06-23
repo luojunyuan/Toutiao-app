@@ -14,13 +14,13 @@
         android:textSize="20sp"
         android:layout_marginTop="15dp"
         android:layout_marginStart="15dp"
-        android:text="您收到了一条评论"/>
+        android:text="@string/receive_notice"/>
 
     <TextView
         android:id="@+id/item_notice_date"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="2020/06/18"
+        android:text="@string/_2020_06_18"
         android:layout_marginStart="320dp"
         android:layout_below="@+id/item_notice"/>
 

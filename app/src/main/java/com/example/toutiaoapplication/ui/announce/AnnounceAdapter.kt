@@ -69,7 +69,7 @@ class AnnounceAdapter(private var data: List<News>) :
         holder.itemView.tv_abstract.text = data[position].content
     }
 
-    class ThreadViewHolder(itemView: CardView) : RecyclerView.ViewHolder(itemView)
+    inner class ThreadViewHolder(itemView: CardView) : RecyclerView.ViewHolder(itemView)
 
     companion object {
         const val TAG = "AnnounceAdapter"

@@ -2,52 +2,64 @@ package com.example.toutiaoapplication.ui.notice
 
 import android.app.Activity
 import android.os.Bundle
+import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.toutiaoapplication.R
+import com.example.toutiaoapplication.repo.ApiServers
+import com.example.toutiaoapplication.repo.entities.Notice
+import com.example.toutiaoapplication.repo.entities.ResponseNotice
 import com.example.toutiaoapplication.ui.mine.CollectBean
 import com.example.toutiaoapplication.ui.mine.CollectDatas
 import com.example.toutiaoapplication.ui.mine.NoticeAdapter
-import java.util.*
+import com.example.toutiaoapplication.utils.HelloIntentService
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
 
 class NoticeActivity : AppCompatActivity() {
-    private var list: RecyclerView? = null
-    private var mdata: MutableList<CollectBean>? = null
-
+    private var recyclerView: RecyclerView? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_notice)
+        title = "历史通知"
+
         /*找到控件*/
-        list = findViewById(R.id.notice_recycle_view)
-        title = "按时间排序"
-        /**准备数据 */
-        /***
-         * 模拟数据
-         */
-        initData()
-    }
-
-    /***这个方法用于模拟数据 */
-    private fun initData() {
-        //创建数据集合
-        mdata = ArrayList()
-        //创建模拟数据
-        for (i in CollectDatas.dates.indices) {
-            val data = CollectBean(date= CollectDatas.dates[i],title = CollectDatas.titles[i])
-            //data.date = CollectDatas.dates[i]
-            //data.title = CollectDatas.titles[i]
-            //添加到集合里
-            (mdata as ArrayList<CollectBean>).add(data)
+        recyclerView = findViewById(R.id.notice_recycle_view)
+        val viewManager = LinearLayoutManager(this)
+        recyclerView?.apply {
+            setHasFixedSize(true)
+            layoutManager = viewManager
         }
-        val layoutManager = LinearLayoutManager(this)
-        list!!.layoutManager = layoutManager
-        //创建适配器
-        val adapter =
-            NoticeAdapter(mdata)
-        //设置到recycleView里面去
-        list!!.adapter = adapter
+
+        getData()
     }
 
+    private fun getData() {
+        ApiServers().getApiService().getNotice()
+            .enqueue(object : Callback<ResponseNotice> {
+                override fun onFailure(call: Call<ResponseNotice>, t: Throwable) {
+                    Log.d(HelloIntentService.TAG, t.message.toString())
+                }
+
+                override fun onResponse(
+                    call: Call<ResponseNotice>,
+                    response: Response<ResponseNotice>
+                ) {
+                    Log.d("tag", "sadasdasdasdasdasd")
+                    if (response.isSuccessful) {
+                        response.body()?.data?.let { setData(it) }
+                    }
+                }
+            })
+    }
+
+    private fun setData(data: List<Notice>) {
+        Log.d("tag", data.toString())
+        val adapter = NoticeAdapter(data)
+        recyclerView?.adapter = adapter
+        adapter.notifyDataSetChanged()
+    }
 }

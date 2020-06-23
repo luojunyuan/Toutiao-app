@@ -5,60 +5,24 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.toutiaoapplication.R
+import com.example.toutiaoapplication.repo.entities.Notice
+import com.example.toutiaoapplication.utils.transUnixTime
+import kotlinx.android.synthetic.main.item_notice.view.*
 
-class NoticeAdapter(private val mdata: List<CollectBean>?) :
+class NoticeAdapter(private val mData: List<Notice>) :
     RecyclerView.Adapter<NoticeAdapter.InnerHolder>() {
 
-    /**
-     * 用于创建条目的view
-     */
-    override fun onCreateViewHolder(
-        parent: ViewGroup,
-        viewType: Int
-    ): InnerHolder {
-
-        //传进的view就是条目的界面
-        /*
-        1.拿到view
-        2.创建InnerHolder
-        */
-        val view =
-            View.inflate(parent.context, R.layout.item_notice, null)
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): InnerHolder {
+        val view = View.inflate(parent.context, R.layout.item_notice, null)
         return InnerHolder(view)
     }
 
-    /**
-     * 这个方法时用于绑定holder，一般用来设置数据
-     */
-    override fun onBindViewHolder(
-        holder: InnerHolder,
-        position: Int
-    ) {
-        holder.setData(mdata!![position])
+    override fun onBindViewHolder(holder: InnerHolder, position: Int) {
+        holder.itemView.item_notice_date.text = transUnixTime(mData[position].ntime)
+        holder.itemView.item_notice.text = mData[position].ncont
     }
 
-    override fun getItemCount(): Int {
-        return mdata?.size ?: 0
-    }
+    override fun getItemCount(): Int = mData.size
 
-    inner class InnerHolder(itemView: View) :
-        RecyclerView.ViewHolder(itemView) {
-        private val mdate: TextView
-        private val mtitle: TextView
-
-        //用于设置数据
-        fun setData(collectBean: CollectBean) {
-            //设置数据
-            mdate.text = collectBean.date
-            mtitle.text = collectBean.title
-        }
-
-        init {
-
-            //找到条目控件
-            mdate = itemView.findViewById<View>(R.id.item_notice_date) as TextView
-            mtitle = itemView.findViewById<View>(R.id.item_notice) as TextView
-        }
-    }
-
+    inner class InnerHolder(itemView: View) : RecyclerView.ViewHolder(itemView)
 }
