@@ -10,9 +10,9 @@
         android:title="@string/menu_home" />
 
     <item
-        android:id="@+id/sideFragment"
+        android:id="@+id/designFragment"
         android:icon="@drawable/sidelogo_white_24dp"
-        android:title="@string/menu_side" />
+        android:title="@string/menu_design" />
 
     <item
         android:id="@+id/announceFragment"

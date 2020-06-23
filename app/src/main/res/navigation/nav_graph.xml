@@ -20,10 +20,10 @@
         tools:layout="@layout/fragment_accounts" />
 
     <fragment
-        android:id="@+id/sideFragment"
-        android:name="com.example.toutiaoapplication.ui.side.SideFragment"
-        android:label="Side"
-        tools:layout="@layout/fragment_side" />
+        android:id="@+id/designFragment"
+        android:name="com.example.toutiaoapplication.ui.design.DesignFragment"
+        android:label="Design"
+        tools:layout="@layout/fragment_design" />
 
     <fragment
         android:id="@+id/settingFragment"

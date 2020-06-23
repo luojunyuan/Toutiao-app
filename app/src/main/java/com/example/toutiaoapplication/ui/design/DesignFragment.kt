@@ -1,4 +1,4 @@
-package com.example.toutiaoapplication.ui.announce
+package com.example.toutiaoapplication.ui.design
 
 import android.content.Intent
 import android.os.Bundle
@@ -17,11 +17,11 @@ import com.example.toutiaoapplication.repo.entities.Top
 import com.example.toutiaoapplication.ui.thread.ArticleActivity
 import com.example.toutiaoapplication.utils.transUnixTime
 
-class AnnounceFragment : Fragment(), AnnounceContract.View {
-    override lateinit var presenter: AnnounceContract.Presenter
+class DesignFragment : Fragment(), DesignContract.View {
+    override lateinit var presenter: DesignContract.Presenter
 
     override fun refreshNews(data: List<News>) {
-        viewAdapter = AnnounceAdapter(data, presenter)
+        viewAdapter = DesignAdapter(data, presenter)
         viewAdapter?.notifyDataSetChanged()
         recyclerView.adapter = viewAdapter
         refresh.isRefreshing = false
@@ -36,7 +36,7 @@ class AnnounceFragment : Fragment(), AnnounceContract.View {
 
     private lateinit var viewManager: RecyclerView.LayoutManager
     private lateinit var recyclerView: RecyclerView
-    private var viewAdapter: AnnounceAdapter? = null
+    private var viewAdapter: DesignAdapter? = null
     private lateinit var topExtra: TextView
     private lateinit var topTitle: TextView
     private lateinit var topReceiveData: Top
@@ -47,7 +47,7 @@ class AnnounceFragment : Fragment(), AnnounceContract.View {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        val rootView = inflater.inflate(R.layout.fragment_announce, container, false)
+        val rootView = inflater.inflate(R.layout.fragment_design, container, false)
 
         initData()
         initView(rootView)
@@ -74,7 +74,7 @@ class AnnounceFragment : Fragment(), AnnounceContract.View {
         }
 
         // 设置recyclerview
-        recyclerView = view.findViewById<RecyclerView>(R.id.announce_recycler_view).apply {
+        recyclerView = view.findViewById<RecyclerView>(R.id.design_recycler_view).apply {
             setHasFixedSize(true)
             layoutManager = viewManager
         }
@@ -90,13 +90,13 @@ class AnnounceFragment : Fragment(), AnnounceContract.View {
     }
 
     private fun initData() {
-        presenter = AnnouncePresenter(this)
+        presenter = DesignPresenter(this)
         viewManager = LinearLayoutManager(context)
 
         presenter.start()
     }
 
     companion object {
-        const val TAG = "AnnounceFragment"
+        const val TAG = "DesignFragment"
     }
 }
