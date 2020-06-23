@@ -168,7 +168,7 @@
     <string-array name="forum_array">
         <item>主页 - 1</item>
     </string-array>
-    <string name="title_activity_info">InfoActivity</string>
+    <string name="title_activity_info">用户信息</string>
     <!--
     This string is used for square devices and overridden by hello_world in
     values-round/strings.xml for round devices.
@@ -177,4 +177,6 @@
     <string name="menu_bad">点踩</string>
     <string name="menu_star">收藏</string>
     <string name="announce">公告</string>
+    <string name="channel_name">channel_id_1</string>
+    <string name="channel_description">channel_id_1_channel_description</string>
 </resources>

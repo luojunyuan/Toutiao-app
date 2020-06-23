@@ -101,9 +101,8 @@ class HomeFragment : Fragment(), HomeContract.View {
         super.onCreateOptionsMenu(menu, inflater)
 
         val new = menu.findItem(R.id.newThread)
-        if (this.context?.let { loadSavedUserInfo(it).aid } == 1){
-            new.isVisible = false
-        }
+        // maybe -1 on Logout status
+        new.isVisible = this.context?.let { loadSavedUserInfo(it).aid } != 1
         new.setOnMenuItemClickListener {
             if (isAlreadyLogged(this.requireContext())) {
                 startActivity(Intent(this.context, NewThreadActivity::class.java))

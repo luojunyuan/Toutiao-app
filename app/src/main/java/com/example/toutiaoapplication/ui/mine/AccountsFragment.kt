@@ -25,8 +25,8 @@ class AccountsFragment : Fragment(), View.OnClickListener{
     private var loginState = false
     private lateinit var tv: TextView
 
-    override fun onResume() {
-        super.onResume()
+    override fun onStart() {
+        super.onStart()
         // 判断是不是已经登陆了
         loginState = isAlreadyLogged(this.requireContext())
         if (loginState) {

@@ -1,25 +1,26 @@
 package com.example.toutiaoapplication
 
+import android.app.NotificationChannel
+import android.app.NotificationManager
+import android.content.Context
+import android.content.Intent
+import android.os.Build
 import android.os.Bundle
-import android.util.Log
 import android.view.MenuItem
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.app.NotificationCompat
 import androidx.core.view.GravityCompat
 import androidx.drawerlayout.widget.DrawerLayout
 import androidx.navigation.NavController
 import androidx.navigation.findNavController
 import androidx.navigation.ui.*
-import com.example.toutiaoapplication.repo.ApiServers
-import com.example.toutiaoapplication.repo.entities.ResponseSingleNew
-import com.example.toutiaoapplication.ui.announce.AnnouncePresenter
+import com.example.toutiaoapplication.utils.CHANNEL_ID
+import com.example.toutiaoapplication.utils.HelloIntentService
 import com.example.toutiaoapplication.utils.URL
 import com.example.toutiaoapplication.utils.getPortSP
-import com.example.toutiaoapplication.utils.toast
 import kotlinx.android.synthetic.main.activity_main.*
-import retrofit2.Call
-import retrofit2.Callback
-import retrofit2.Response
+import okhttp3.internal.notify
 import kotlin.properties.Delegates
 
 class MainActivity : AppCompatActivity() {
@@ -40,6 +41,11 @@ class MainActivity : AppCompatActivity() {
             // may need
             // activeLoginStatus()
         // }
+        Intent(this, HelloIntentService::class.java).also { intent ->
+            startService(intent)
+            // error
+            // startForegroundService(intent)
+        }
 
         initControl()
     }
