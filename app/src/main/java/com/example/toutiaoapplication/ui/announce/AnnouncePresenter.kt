@@ -2,6 +2,7 @@ package com.example.toutiaoapplication.ui.announce
 
 import android.util.Log
 import com.example.toutiaoapplication.repo.ApiServers
+import com.example.toutiaoapplication.repo.entities.News
 import com.example.toutiaoapplication.repo.entities.ResponseNews
 import com.example.toutiaoapplication.repo.entities.ResponseSingleNew
 import com.example.toutiaoapplication.utils.toast
@@ -24,7 +25,13 @@ class AnnouncePresenter(var view: AnnounceFragment) : AnnounceContract.Presenter
                 ) {
                     if (response.isSuccessful){
                         response.body()?.let {
-                            uiThread { view.refreshNews(it.data.list) }
+                            val newList = mutableListOf<News>()
+                            for (thread in it.data.list) {
+                                if (thread.del == 1 || thread.top == 1) {
+                                    //
+                                } else newList.add(thread)
+                            }
+                            uiThread { view.refreshNews(newList) }
                         }
                     } else uiThread { view.toast("Response Error") }
                 }

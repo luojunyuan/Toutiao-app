@@ -14,6 +14,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+        <activity android:name=".ui.notice.NoticeActivity" />
         <activity android:name=".ui.thread.AnotherThreadActivity" />
         <activity
             android:name=".ui.setting.InfoActivity"
@@ -58,6 +59,7 @@
         <activity
             android:name=".ui.collect.CollectActivity"
             android:parentActivityName=".MainActivity" />
+
         <service android:name=".utils.HelloIntentService" />
     </application>
 

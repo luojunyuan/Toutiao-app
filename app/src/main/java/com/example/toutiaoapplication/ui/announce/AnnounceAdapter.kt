@@ -4,12 +4,14 @@ import android.content.Intent
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.appcompat.widget.PopupMenu
 import androidx.cardview.widget.CardView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.toutiaoapplication.R
 import com.example.toutiaoapplication.repo.entities.News
 import com.example.toutiaoapplication.ui.detail.DetailActivity
 import com.example.toutiaoapplication.ui.thread.AnotherThreadActivity
+import com.example.toutiaoapplication.utils.loadSavedUserInfo
 import com.example.toutiaoapplication.utils.transUnixTime
 import kotlinx.android.synthetic.main.item_news_article_text.view.*
 
@@ -19,7 +21,6 @@ class AnnounceAdapter(private var data: List<News>) :
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ThreadViewHolder {
         val itemView =
             LayoutInflater.from(parent.context).inflate(R.layout.item_news_article_text, parent, false) as CardView
-        Log.d(TAG, "1")
 
         val holder = ThreadViewHolder(itemView)
         holder.itemView.setOnClickListener{
@@ -35,6 +36,25 @@ class AnnounceAdapter(private var data: List<News>) :
                 putExtra("tid", tid)
             }
             parent.context.startActivity(intent)
+        }
+        if (loadSavedUserInfo(parent.context).aid > 1) {
+            holder.itemView.setOnLongClickListener {
+                val menu = PopupMenu(parent.context, it)
+                menu.menuInflater.inflate(R.menu.menu_touch_hold, menu.menu)
+                menu.setOnMenuItemClickListener {item ->
+                    when (item.itemId) {
+                        R.id.threadDelete -> {
+
+                        }
+                        R.id.threadTop -> {
+
+                        }
+                    }
+                    true
+                }
+                menu.show()
+                true
+            }
         }
 
         return holder

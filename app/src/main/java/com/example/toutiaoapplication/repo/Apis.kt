@@ -103,10 +103,18 @@ interface Apis {
     // 获取用户信息 "/api/users/{value}"// username or uid
     @GET("/api/users/{value}")
     fun getInfo(@Path("value") key: String): Call<ResponseUser>
+
     // 修改用户信息 "/api/users"
     @PUT("/api/users")
     fun updateInfo(@Body payload: InfoPayload): Call<ResponseUser>
     // 修改自己的密码 "/api/upass"
+
+    // -------------- Notification -------------------------------
+    /**
+     * 获得所有通知
+     */
+    @GET("/api/notice")
+    fun getNotice(): Call<ResponseNotice>
 
     // -----------------------------------------------------------
     // 返回四种权限类型（没啥用？）

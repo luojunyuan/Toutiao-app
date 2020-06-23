@@ -13,6 +13,7 @@ import com.example.toutiaoapplication.R
 import com.example.toutiaoapplication.repo.entities.User
 import com.example.toutiaoapplication.ui.collect.CollectActivity
 import com.example.toutiaoapplication.ui.login.LoginActivity
+import com.example.toutiaoapplication.ui.notice.NoticeActivity
 import com.example.toutiaoapplication.ui.setting.UserSettingActivity
 import com.example.toutiaoapplication.utils.isAlreadyLogged
 import com.example.toutiaoapplication.utils.loadSavedUserInfo
@@ -66,6 +67,9 @@ class AccountsFragment : Fragment(), View.OnClickListener{
             )} else toast("请先登录")
             R.id.tv_1 -> startActivity(
                 Intent(this.context, CollectActivity::class.java))
+            R.id.buttonNotice -> if (loginState) { startActivity(
+                Intent(this.context, NoticeActivity::class.java)
+            )} else toast("请先登录")
         }
     }
 

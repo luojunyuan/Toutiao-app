@@ -1,27 +1,30 @@
 package com.example.toutiaoapplication
 
-import android.app.NotificationChannel
-import android.app.NotificationManager
+import android.app.KeyguardManager
+import android.content.BroadcastReceiver
 import android.content.Context
 import android.content.Intent
-import android.os.Build
+import android.content.IntentFilter
 import android.os.Bundle
+import android.os.PowerManager
+import android.util.Log
 import android.view.MenuItem
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.app.NotificationCompat
 import androidx.core.view.GravityCompat
 import androidx.drawerlayout.widget.DrawerLayout
 import androidx.navigation.NavController
 import androidx.navigation.findNavController
-import androidx.navigation.ui.*
-import com.example.toutiaoapplication.utils.CHANNEL_ID
+import androidx.navigation.ui.AppBarConfiguration
+import androidx.navigation.ui.NavigationUI
+import androidx.navigation.ui.setupActionBarWithNavController
+import androidx.navigation.ui.setupWithNavController
 import com.example.toutiaoapplication.utils.HelloIntentService
 import com.example.toutiaoapplication.utils.URL
 import com.example.toutiaoapplication.utils.getPortSP
 import kotlinx.android.synthetic.main.activity_main.*
-import okhttp3.internal.notify
 import kotlin.properties.Delegates
+
 
 class MainActivity : AppCompatActivity() {
 
@@ -41,13 +44,30 @@ class MainActivity : AppCompatActivity() {
             // may need
             // activeLoginStatus()
         // }
-        Intent(this, HelloIntentService::class.java).also { intent ->
-            startService(intent)
-            // error
-            // startForegroundService(intent)
+
+        // 监听广播
+        // mScreenReceiver = ScreenBroadcastReceiver()
+        // startScreenBroadcastReceiver()
+
+        // 黑屏状态下service不启动
+        val powerManager = applicationContext.getSystemService(Context.POWER_SERVICE) as PowerManager
+        val isScreenOn = powerManager.isInteractive
+        if (isScreenOn) {
+            Intent(this, HelloIntentService::class.java).also { serviceIntent ->
+                startService(serviceIntent)
+            }
         }
 
         initControl()
+    }
+
+    private lateinit var mScreenReceiver: BroadcastReceiver
+    private fun startScreenBroadcastReceiver() {
+        val filter = IntentFilter()
+        filter.addAction(Intent.ACTION_SCREEN_ON)
+        filter.addAction(Intent.ACTION_SCREEN_OFF)
+        filter.addAction(Intent.ACTION_USER_PRESENT)
+        applicationContext.registerReceiver(mScreenReceiver, filter)
     }
 
     /**
