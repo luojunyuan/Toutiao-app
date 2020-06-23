@@ -62,7 +62,7 @@ class HelloIntentService : IntentService("HelloIntentService") {
                     response: Response<ResponseNotice>
                 ) {
                     if (response.isSuccessful) {
-                        val set = loadNotiveId(MainActivity.instance)
+                        val set = loadNoticeId(MainActivity.instance)
                         // Log.d(TAG, set.toString())
                         // Log.d(TAG, response.body()?.data.toString())
                         val nid = response.body()!!.data[0].nid

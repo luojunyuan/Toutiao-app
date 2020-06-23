@@ -5,11 +5,14 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.appcompat.widget.PopupMenu
 import androidx.recyclerview.widget.RecyclerView
 import com.example.toutiaoapplication.R
 import com.example.toutiaoapplication.repo.ApiServers
 import com.example.toutiaoapplication.repo.entities.Comments
 import com.example.toutiaoapplication.repo.entities.ResponseUser
+import com.example.toutiaoapplication.repo.entities.Top
+import com.example.toutiaoapplication.utils.loadSavedUserInfo
 import com.example.toutiaoapplication.utils.toast
 import com.example.toutiaoapplication.utils.transUnixTime
 import kotlinx.android.synthetic.main.item_comment.view.*
@@ -25,8 +28,25 @@ class CommentAdapter(var data: List<Comments>) :
         val v = LayoutInflater.from(parent.context)
             .inflate(R.layout.item_comment, parent, false)
 
-        // val holder = CommentViewHolder(v)
+        val holder = CommentViewHolder(v)
         // parent.context
+        if (loadSavedUserInfo(parent.context).aid > 1) {
+            holder.itemView.setOnLongClickListener {
+                val menu = PopupMenu(parent.context, it)
+                menu.menuInflater.inflate(R.menu.menu_touch_hold_single_delete, menu.menu)
+                menu.setOnMenuItemClickListener {item ->
+                    when (item.itemId) {
+                        R.id.threadDelete -> {
+                            // fake delete
+                            notifyItemRemoved(holder.adapterPosition)
+                        }
+                    }
+                    true
+                }
+                menu.show()
+                true
+            }
+        }
 
         return CommentViewHolder(v)
     }

@@ -3,11 +3,14 @@ package com.example.toutiaoapplication.utils
 import android.content.Context
 import android.content.Context.MODE_PRIVATE
 import android.icu.text.SimpleDateFormat
+import android.util.Log
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import com.example.toutiaoapplication.repo.entities.Notice
 import com.example.toutiaoapplication.repo.entities.User
 import java.text.ParseException
+import java.time.ZoneId
+import java.time.format.DateTimeFormatter
 import java.util.*
 
 fun Context.toast(text: String, duration: Int = Toast.LENGTH_SHORT) {
@@ -91,7 +94,7 @@ fun saveNoticeId(context: Context, notices: List<Notice>) {
     }
 }
 
-fun loadNotiveId(context: Context): MutableSet<String>? {
+fun loadNoticeId(context: Context): MutableSet<String>? {
     val sp = context.getSharedPreferences("notice_config", MODE_PRIVATE)
     val default =  setOf<String>()
     return sp.getStringSet("list_id", default)
@@ -115,5 +118,11 @@ fun saveStringSP(context: Context, key: String, value: String) {
 }
 
 fun transUnixTime(timestamp: Long): String {
-    return SimpleDateFormat.getDateTimeInstance().format(timestamp)
+    val trans = timestamp / 1000 - 46800
+    Log.d("TAG", trans.toString())
+    return DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm")
+        .withLocale(Locale.SIMPLIFIED_CHINESE)
+        .withZone(ZoneId.of("Asia/Shanghai"))
+        .format(java.time.Instant.ofEpochSecond(trans))
+    // SimpleDateFormat.getDateTimeInstance().format(timestamp)
 }
