@@ -60,7 +60,7 @@ class SearchActivity : AppCompatActivity() {
     }
 
     fun refresh(data: List<News>) {
-        val adapter = HomeAdapter(data)
+        val adapter = SearchAdapter(data)
         adapter.notifyDataSetChanged()
         recyclerView.adapter = adapter
     }

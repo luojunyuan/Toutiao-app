@@ -1,4 +1,6 @@
-package com.example.toutiaoapplication.ui.home
+package com.example.toutiaoapplication.ui.search
+
+
 
 import android.content.Intent
 import android.util.Log
@@ -17,8 +19,8 @@ import com.example.toutiaoapplication.utils.loadSavedUserInfo
 import com.example.toutiaoapplication.utils.transUnixTime
 import kotlinx.android.synthetic.main.item_news_article_text.view.*
 
-class HomeAdapter(private var data: List<News>, private var presenter: HomeContract.Presenter) :
-    RecyclerView.Adapter<HomeAdapter.ThreadViewHolder>() {
+class SearchAdapter(private var data: List<News>) :
+    RecyclerView.Adapter<SearchAdapter.ThreadViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ThreadViewHolder {
         val itemView =
@@ -39,30 +41,6 @@ class HomeAdapter(private var data: List<News>, private var presenter: HomeContr
             }
             parent.context.startActivity(intent)
         }
-        if (loadSavedUserInfo(parent.context).aid > 1) {
-            holder.itemView.setOnLongClickListener {
-                val menu = PopupMenu(parent.context, it)
-                menu.menuInflater.inflate(R.menu.menu_touch_hold, menu.menu)
-                menu.setOnMenuItemClickListener {item ->
-                    when (item.itemId) {
-                        R.id.threadDelete -> {
-                            // fake delete
-                            notifyItemRemoved(holder.adapterPosition)
-                        }
-                        R.id.threadTop -> {
-                            // fake top
-                            val pos = holder.adapterPosition
-                            val topData = Top(tname = data[pos].title, ttime = data[pos].time,
-                                uname = "",udesc = "",uid = -1,fname = "",fid = -1,ttop = -1,tcont = "",tid = -1,tdel = -1)
-                            presenter.coverTop(topData)
-                        }
-                    }
-                    true
-                }
-                menu.show()
-                true
-            }
-        }
 
         return holder
     }
@@ -78,6 +56,6 @@ class HomeAdapter(private var data: List<News>, private var presenter: HomeContr
     class ThreadViewHolder(itemView: CardView) : RecyclerView.ViewHolder(itemView)
 
     companion object {
-        const val TAG = "HomeAdapter"
+        const val TAG = "SearchAdapter"
     }
 }
