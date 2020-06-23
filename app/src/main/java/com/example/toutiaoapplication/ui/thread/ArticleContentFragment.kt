@@ -7,7 +7,10 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import com.example.toutiaoapplication.R
+import com.example.toutiaoapplication.utils.toast
 import com.example.toutiaoapplication.utils.transUnixTime
+import kotlinx.android.synthetic.main.fragment_article_content.*
+import kotlinx.android.synthetic.main.fragment_article_content.view.*
 
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
 private const val CONTENT = "content"
@@ -39,6 +42,14 @@ class ArticleContentFragment : Fragment() {
 
         rootView.findViewById<TextView>(R.id.tvContent).text = content
         rootView.findViewById<TextView>(R.id.tvTime).text = transUnixTime(time!!)
+        rootView.button.setOnClickListener {
+            toast("喜欢👍，+1s")
+            textView.text = (textView.text.toString().toInt()+1).toString()
+        }
+        rootView.button2.setOnClickListener {
+            toast("不好👎")
+            textView.text = (textView.text.toString().toInt()-1).toString()
+        }
 
         return rootView
     }
