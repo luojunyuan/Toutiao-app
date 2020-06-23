@@ -5,7 +5,7 @@ import android.os.Bundle
 import androidx.appcompat.widget.Toolbar
 import com.example.toutiaoapplication.R
 
-class AnotherThreadActivity : AppCompatActivity() {
+class ArticleActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_another_thread)

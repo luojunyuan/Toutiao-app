@@ -2,7 +2,6 @@ package com.example.toutiaoapplication.ui.announce
 
 import android.content.Intent
 import android.os.Bundle
-import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -15,12 +14,8 @@ import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
 import com.example.toutiaoapplication.R
 import com.example.toutiaoapplication.repo.entities.News
 import com.example.toutiaoapplication.repo.entities.Top
-import com.example.toutiaoapplication.ui.home.HomeAdapter
-import com.example.toutiaoapplication.ui.thread.AnotherThreadActivity
+import com.example.toutiaoapplication.ui.thread.ArticleActivity
 import com.example.toutiaoapplication.utils.transUnixTime
-import kotlinx.android.synthetic.main.fragment_announce.*
-import java.util.*
-import kotlin.concurrent.schedule
 
 class AnnounceFragment : Fragment(), AnnounceContract.View {
     override lateinit var presenter: AnnounceContract.Presenter
@@ -69,7 +64,7 @@ class AnnounceFragment : Fragment(), AnnounceContract.View {
         topExtra = view.findViewById(R.id.tv_extra)
         topTitle = view.findViewById(R.id.tv_title)
         view.findViewById<CardView>(R.id.topView).setOnClickListener {
-            val intent = Intent(context, AnotherThreadActivity::class.java).apply {
+            val intent = Intent(context, ArticleActivity::class.java).apply {
                 putExtra("title", topReceiveData.tname)
                 putExtra("content", topReceiveData.tcont)
                 putExtra("time", topReceiveData.ttime)

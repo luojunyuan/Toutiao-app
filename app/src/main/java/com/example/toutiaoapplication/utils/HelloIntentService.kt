@@ -12,8 +12,7 @@ import com.example.toutiaoapplication.MainActivity
 import com.example.toutiaoapplication.R
 import com.example.toutiaoapplication.repo.ApiServers
 import com.example.toutiaoapplication.repo.entities.ResponseNotice
-import com.example.toutiaoapplication.ui.thread.AnotherThreadActivity
-import okhttp3.internal.notify
+import com.example.toutiaoapplication.ui.thread.ArticleActivity
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -28,7 +27,7 @@ class HelloIntentService : IntentService("HelloIntentService") {
     private fun sendNotification(title: String, content: String) {
         val nm = registerNotificationManager()
 
-        val intent = Intent(this, AnotherThreadActivity::class.java).apply {
+        val intent = Intent(this, ArticleActivity::class.java).apply {
             flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
             putExtra("title", "title")
             putExtra("content", "content")

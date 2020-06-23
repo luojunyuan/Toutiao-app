@@ -1,7 +1,6 @@
 package com.example.toutiaoapplication.ui.announce
 
 import android.content.Intent
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.appcompat.widget.PopupMenu
@@ -9,8 +8,8 @@ import androidx.cardview.widget.CardView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.toutiaoapplication.R
 import com.example.toutiaoapplication.repo.entities.News
-import com.example.toutiaoapplication.ui.detail.DetailActivity
-import com.example.toutiaoapplication.ui.thread.AnotherThreadActivity
+import com.example.toutiaoapplication.repo.entities.Top
+import com.example.toutiaoapplication.ui.thread.ArticleActivity
 import com.example.toutiaoapplication.utils.loadSavedUserInfo
 import com.example.toutiaoapplication.utils.transUnixTime
 import kotlinx.android.synthetic.main.item_news_article_text.view.*
@@ -29,7 +28,7 @@ class AnnounceAdapter(private var data: List<News>) :
             val content = data[position].content
             val time = data[position].time
             val tid = data[position].tid
-            val intent = Intent(parent.context, AnotherThreadActivity::class.java).apply {
+            val intent = Intent(parent.context, ArticleActivity::class.java).apply {
                 putExtra("title", title)
                 putExtra("content", content)
                 putExtra("time", time)
@@ -44,10 +43,12 @@ class AnnounceAdapter(private var data: List<News>) :
                 menu.setOnMenuItemClickListener {item ->
                     when (item.itemId) {
                         R.id.threadDelete -> {
-
+                            // fake delete
+                            notifyItemRemoved(holder.adapterPosition)
                         }
                         R.id.threadTop -> {
-
+                            // fake top
+                            notifyItemRemoved(holder.adapterPosition)
                         }
                     }
                     true

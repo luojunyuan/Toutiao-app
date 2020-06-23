@@ -57,12 +57,16 @@ class DetailActivity : AppCompatActivity(), DetailContract.View {
 //            Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
 //                .setAction("Action", null).show()
 //        }
+//         app_bar.addOnOffsetChangedListener {}
+
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
         menuInflater.inflate(R.menu.menu_detail,menu)
         return super.onCreateOptionsMenu(menu)
     }
+
+
 
     companion object {
         const val TAG = "DetailActivity"
