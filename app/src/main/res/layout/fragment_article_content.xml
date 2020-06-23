@@ -24,32 +24,39 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="数字"
-            app:layout_constraintBaseline_toBaselineOf="@+id/button"
+            android:layout_marginStart="240dp"
+            android:layout_marginTop="20dp"
             app:layout_constraintEnd_toStartOf="@+id/button"
             app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintStart_toStartOf="parent" />
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tvTime"
+            app:layout_constraintBottom_toBottomOf="@+id/guidine1"/>
 
 
-        <Button
+        <ImageView
             android:id="@+id/button"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="我喜欢"
-            app:layout_constraintBaseline_toBaselineOf="@+id/button2"
+            android:layout_marginTop="10dp"
+            android:src="@drawable/ic_good_pink_32dp"
             app:layout_constraintEnd_toStartOf="@+id/button2"
             app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintStart_toEndOf="@+id/textView" />
+            app:layout_constraintStart_toEndOf="@+id/textView"
+            app:layout_constraintTop_toBottomOf="@+id/tvTime"
+            app:layout_constraintBottom_toBottomOf="@+id/guidine1"
+            />
 
-        <Button
+        <ImageView
             android:id="@+id/button2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
-            android:text="这个我不喜欢"
+            android:layout_marginTop="10dp"
+            android:src="@drawable/ic_bad_pink_32dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toEndOf="@+id/button"
-            app:layout_constraintTop_toBottomOf="@+id/tvTime" />
+            app:layout_constraintTop_toBottomOf="@+id/tvTime"
+            app:layout_constraintBottom_toBottomOf="@+id/guidine1"/>
 
         <TextView
             android:id="@+id/tvTime"
@@ -62,6 +69,20 @@
             app:layout_constraintTop_toBottomOf="@+id/tvContent" />
 
 
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="0.96"
+            ></androidx.constraintlayout.widget.Guideline>
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guidine2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_percent="0.50"/>
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 </FrameLayout>
