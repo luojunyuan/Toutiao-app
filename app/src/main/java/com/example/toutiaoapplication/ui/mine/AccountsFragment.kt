@@ -7,6 +7,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
 import android.widget.TextView
 import androidx.fragment.app.ListFragment
 import com.example.toutiaoapplication.R
@@ -53,6 +54,8 @@ class AccountsFragment : Fragment(), View.OnClickListener{
         rootView.userInfoSetting.setOnClickListener(this)
         val tv1 = rootView.findViewById<TextView>(R.id.tv_1)
         tv1.setOnClickListener(this)
+        val buttonNotice = rootView.findViewById<Button>(R.id.buttonNotice)
+        buttonNotice.setOnClickListener(this)
 
         return rootView
     }
