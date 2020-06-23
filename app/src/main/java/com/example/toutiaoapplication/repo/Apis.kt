@@ -8,27 +8,20 @@ import retrofit2.http.*
 
 interface Apis {
 
-//    @GET("api/forum")
-//    fun allForum(): Call<News>
-
-    // 指定分区获取帖子
+    // --------------------- THREAD ---------------------
+    // 指定分区获取主题
     @GET("api/fthread/{fid}")
     fun getExactForum(@Path("fid") key: Int): Call<ResponseNews>
 
-    // 返回所有thread
+    // 返回所有主题
     @GET("api/thread")
     fun allNews(): Call<ResponseNews> // Response<List<News>>
 
-    // 搜索
+    // 搜索主题
     @GET("/api/search/t/{title_string}")
     fun searchWord(@Path("title_string") keyWord: String): Call<ResponseNews>
 
-    /**
-     * 获取主题
-     */
-    // /api/thread/{tid}
-
-    // 根据tid获取评论
+    // 根据主题tid获取评论
     @GET("/api/tcomm/{tid}")
     fun getComments(@Path("tid") tid: String): Call<ResponseComments>
 
@@ -37,48 +30,9 @@ interface Apis {
      */
     // @GET("/api/rate/{tid}")
 
-    // 通过uid查询用户信息
-    @GET("api/users/{uid}")
-    fun getUser(@Path("uid") uid: Int): Call<ResponseUser>
-
-    /**
-     * 登陆状态检查
-     */
-    @GET("/api/check")
-    fun checkLogin(): Call<CheckResponse>
-
-    // 通过uid获取用户所有评论
-    @GET("/api/ucomm/{uid}")
-    fun getUserComment(@Path("uid") uid: Int)
-
-    /**
-     * 通过cid（一条评论id）获取一条评论详情内容
-     */
-    @GET("/api/comm/{cid}")
-    fun getComment(@Path("cid") cid: Int)
-
-    // session 保持
-    // https://blog.csdn.net/Kedongyu_/article/details/82662795
-    @Headers("Content-Type: application/json")
-    @POST("api/login")
-    fun loginUser(@Body payload: LoginPayload): Call<ResponseUser>
-
-    /**
-     * 添加主题
-     */
-    //
+    // 添加主题
     @POST("/api/thread")
     fun createThread(@Body payload: ThreadPayload): Call<ResponseNews> // data 不返回数据
-
-    /**
-     * 添加评论
-     * code 返回 0 发送成功
-     */
-    @POST("/api/comm")
-    fun postComment(@Body payload: CommentPayload): Call<ResponseComments>
-
-    // 删除评论
-    // @DELETE("/api/comm/{cid}")
 
     // 点赞
     // "/api/rate/{tid}"
@@ -91,6 +45,26 @@ interface Apis {
     // 获取置顶主题
     @GET("/api/top")
     fun getTop(): Call<ResponseSingleNew>
+
+    // --------------- USER -----------------------------------
+
+    // 通过uid查询用户信息
+    @GET("api/users/{uid}")
+    fun getUser(@Path("uid") uid: Int): Call<ResponseUser>
+
+    // 登陆状态检查
+    @GET("/api/check")
+    fun checkLogin(): Call<CheckResponse>
+
+    // 通过uid获取用户所有评论
+    @GET("/api/ucomm/{uid}")
+    fun getUserComment(@Path("uid") uid: Int)
+
+    // session 保持
+    // https://blog.csdn.net/Kedongyu_/article/details/82662795
+    @Headers("Content-Type: application/json")
+    @POST("api/login")
+    fun loginUser(@Body payload: LoginPayload): Call<ResponseUser>
 
     // logout
     @GET("/api/logout")
@@ -109,6 +83,24 @@ interface Apis {
     fun updateInfo(@Body payload: InfoPayload): Call<ResponseUser>
     // 修改自己的密码 "/api/upass"
 
+    // ------------------- COMMENT -----------------------------
+
+    /**
+     * 通过cid（一条评论id）获取一条评论详情内容
+     */
+    @GET("/api/comm/{cid}")
+    fun getComment(@Path("cid") cid: Int)
+
+    /**
+     * 添加评论
+     * code 返回 0 发送成功
+     */
+    @POST("/api/comm")
+    fun postComment(@Body payload: CommentPayload): Call<ResponseComments>
+
+    // 删除评论
+    // @DELETE("/api/comm/{cid}")
+
     // -------------- Notification -------------------------------
     /**
      * 获得所有通知
@@ -116,7 +108,8 @@ interface Apis {
     @GET("/api/notice")
     fun getNotice(): Call<ResponseNotice>
 
-    // -----------------------------------------------------------
+
+    // -------------- USELESS -----------------------------------
     // 返回四种权限类型（没啥用？）
     // @GET("/api/auth[/1or2or3or4]")
     // 通过 aid 修改权限信息？
