@@ -19,10 +19,13 @@ import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.NavigationUI
 import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
-import com.example.toutiaoapplication.utils.HelloIntentService
-import com.example.toutiaoapplication.utils.URL
-import com.example.toutiaoapplication.utils.getPortSP
+import com.example.toutiaoapplication.repo.ApiServers
+import com.example.toutiaoapplication.repo.entities.ResponseNotice
+import com.example.toutiaoapplication.utils.*
 import kotlinx.android.synthetic.main.activity_main.*
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
 import kotlin.properties.Delegates
 
 

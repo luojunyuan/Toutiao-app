@@ -51,9 +51,11 @@ class HelloIntentService : IntentService("HelloIntentService") {
     }
 
     private fun requestNotice() {
+        // Expected BEGIN_ARRAY but was BEGIN_OBJECT at line 1 column 20 path $.data
         ApiServers().getApiService().getNotice()
             .enqueue(object : Callback<ResponseNotice> {
                 override fun onFailure(call: Call<ResponseNotice>, t: Throwable) {
+                    Log.d(TAG, "可能是未登入账号")
                     Log.d(TAG, t.message.toString())
                 }
 
